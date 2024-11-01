@@ -1,4 +1,6 @@
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PlayerInteractableFinder : MonoBehaviour
@@ -12,12 +14,24 @@ public class PlayerInteractableFinder : MonoBehaviour
 
     private Collider[] _colliders;
     private WaitForSeconds _delay = new(.1f);
+    private InputManager _inputManager;
 
     private void Start()
     {
         _colliders = new Collider[15];
 
+        _inputManager = ServiceLocator.Instance.Get<InputManager>();
+        _inputManager.KeyEPressed += OnKeyEPressed;
+
         StartCoroutine(FindInteractables());
+    }
+
+    private void OnKeyEPressed()
+    {
+        if (_interactable != null && _interactable.CanInteract)
+        {
+            _interactable.Action();
+        }
     }
 
     private IEnumerator FindInteractables()
@@ -25,17 +39,29 @@ public class PlayerInteractableFinder : MonoBehaviour
         while (true)
         {
             Physics.OverlapSphereNonAlloc(transform.position, _radius, _colliders, _layer);
+            List<IInteractable> interactables = new();
+            
             foreach (Collider collider in _colliders) 
             { 
-                if (collider.TryGetComponent(out IInteractable interactable))
+                if (collider.TryGetComponent(out IInteractable interactable) && interactable.CanInteract)
                 {
-                    if (_interactable.CanInteract)
-                    {
-                        _interactable = interactable;
-                    }
+                    interactables.Add(interactable);
                 }
             }
+
+            _interactable = GetNearestInteractable(interactables);
+
             yield return _delay;
         }
+    }
+
+    private IInteractable GetNearestInteractable(List<IInteractable> interactables)
+    {
+        return interactables.OrderBy(interactbale => Vector3.Distance(transform.position, interactbale.Position)).FirstOrDefault();
+    }
+
+    private void OnDisable()
+    {
+        _inputManager.KeyEPressed -= OnKeyEPressed;
     }
 }
