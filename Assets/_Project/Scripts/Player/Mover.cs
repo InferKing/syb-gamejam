@@ -7,12 +7,12 @@ public class PlayerMover : MonoBehaviour
     private const string Vertical = nameof(Vertical);
 
     [SerializeField] private float _rotationSpeed;
-    [SerializeField] private float _moveSpeed;
+    [SerializeField] private float _moveSpeedFactor;
     [SerializeField] private float _maxSpeed;
     [SerializeField] private PlayerAnimationController _animator;
 
     private Rigidbody _rigidbody;
-    public float MoveSpeed => _moveSpeed;
+    public float MoveSpeed => _moveSpeedFactor;
 
     private void Start()
     {
@@ -36,7 +36,7 @@ public class PlayerMover : MonoBehaviour
 
     public void JoyStickMove(Vector3 direction)
     {
-        Vector3 distance = direction * _moveSpeed * Time.deltaTime;
+        Vector3 distance = direction * _moveSpeedFactor * Time.deltaTime;
         Vector3 nextPosition = transform.position + distance;
 
         if (direction != Vector3.zero)
