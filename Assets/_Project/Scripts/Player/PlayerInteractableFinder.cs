@@ -43,6 +43,7 @@ public class PlayerInteractableFinder : MonoBehaviour
             
             foreach (Collider collider in _colliders) 
             { 
+                if (collider == null) continue;
                 if (collider.TryGetComponent(out IInteractable interactable) && interactable.CanInteract)
                 {
                     interactables.Add(interactable);
