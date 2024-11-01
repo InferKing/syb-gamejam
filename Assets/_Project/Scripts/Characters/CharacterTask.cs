@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Model.Characters
 {
-    [CreateAssetMenu(fileName = "Cfg_Character_", menuName = "Character/Task")]
+    [CreateAssetMenu(fileName = "Cfg_Char_Task_", menuName = "Character/Task")]
     public class CharacterTask : ScriptableObject
     {
         [field: SerializeField]

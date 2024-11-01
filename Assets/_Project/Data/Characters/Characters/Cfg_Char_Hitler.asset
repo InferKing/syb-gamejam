@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cbdab164e4e9ca47a3e796fed8af1a9, type: 3}
+  m_Name: Cfg_Char_Hitler
+  m_EditorClassIdentifier: 
+  <Name>k__BackingField: "\u0413\u0438\u0442\u043B\u0435\u0440"
+  <Tasks>k__BackingField:
+  - {fileID: 11400000, guid: 01d18d1be65e6cb4386bebef49a29ad0, type: 2}
+  - {fileID: 11400000, guid: f2babcda49a17d84291cbc926a966875, type: 2}

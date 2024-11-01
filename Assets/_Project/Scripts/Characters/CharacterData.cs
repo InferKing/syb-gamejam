@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Model.Characters
 {
-    [CreateAssetMenu(fileName = "Cfg_Character_", menuName = "Character/Character")]
+    [CreateAssetMenu(fileName = "Cfg_Char_", menuName = "Character/Character")]
     public class CharacterData : ScriptableObject
     {
         [field: SerializeField]
