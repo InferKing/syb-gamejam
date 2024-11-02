@@ -37,6 +37,7 @@ public class TerminalUI : MonoBehaviour
 
     public void Close()
     {
+        // Проверка в каком состоянии вышел
         _root.SetActive(false);
     }
 
