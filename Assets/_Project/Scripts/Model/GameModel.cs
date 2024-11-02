@@ -22,7 +22,10 @@ public class GameModel : IService
 
     private void OnTerminalClosed(TerminalPickedAndClosedSignal signal)
     {
-        State = GameState.PickedInTerminal;
+        if (State == GameState.InTerminal)
+        {
+            State = GameState.PickedInTerminal;
+        }
     }
 
     private void OnGetItem(GetItemInSceneSignal signal)

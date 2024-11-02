@@ -25,6 +25,12 @@ public class TerminalUI : MonoBehaviour
 
     public void Open()
     {
+        GameModel model = ServiceLocator.Instance.Get<GameModel>();
+
+        if (model.State == GameState.PickedInTerminal || model.State == GameState.GetAll)
+        {
+            return;
+        }
         _root.SetActive(true);
 
         OpenTab(0);
@@ -37,6 +43,19 @@ public class TerminalUI : MonoBehaviour
 
     public void Close()
     {
+        int pickedAmount = ServiceLocator.Instance.Get<PickedItems>().Items.Count;
+        int taskAmount = ServiceLocator.Instance.Get<GameModel>().CurrentTask.task.Items.Count;
+        GameModel model = ServiceLocator.Instance.Get<GameModel>();
+
+        if (pickedAmount == taskAmount)
+        {
+            ServiceLocator.Instance.Get<EventBus>().Invoke(new TerminalPickedAndClosedSignal());
+        }
+        if (pickedAmount != taskAmount && model.State == GameState.InTerminal)
+        {
+            ServiceLocator.Instance.Get<EventBus>().Invoke(new NotEnoughPickedSignal());
+            return;
+        }
         // Проверка в каком состоянии вышел
         _root.SetActive(false);
     }
