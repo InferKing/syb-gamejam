@@ -30,6 +30,8 @@ public class EntryPoint_Game : MonoBehaviour
     private List<ItemData> _items;
     [SerializeField]
     private List<Transform> _whereToGo;
+    [SerializeField]
+    private TaskTimer _taskTimer;
 
     private void Awake()
     {
@@ -42,5 +44,6 @@ public class EntryPoint_Game : MonoBehaviour
         ServiceLocator.Instance.Register(new PickedItems(ServiceLocator.Instance.Get<EventBus>()));
         ServiceLocator.Instance.Register(new GameModel(ServiceLocator.Instance.Get<EventBus>()));
         ServiceLocator.Instance.Register(new AllPointToGo(_whereToGo));
+        ServiceLocator.Instance.Register(new TaskTimer());
     }
 }

@@ -1,11 +1,13 @@
 using System.Collections;
 using UnityEngine;
 
-public class TaskTimer : MonoBehaviour
+public class TaskTimer : MonoBehaviour, IService
 {
     private EventBus _bus;
     private NewTask _task;
     private Coroutine _timer;
+
+    public float time = 0;
 
     private void Start()
     {
@@ -29,7 +31,12 @@ public class TaskTimer : MonoBehaviour
 
     private IEnumerator Timer()
     {
-        yield return new WaitForSeconds(_task.task.RoundTime);
+        time = _task.task.RoundTime;
+        while (time >= 0)
+        {
+            time -= Time.deltaTime;
+            yield return new WaitForSeconds(Time.deltaTime);
+        }
         _bus.Invoke(new FailedTaskSignal(_task));
     }
 }
