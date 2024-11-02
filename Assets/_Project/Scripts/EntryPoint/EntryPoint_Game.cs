@@ -12,12 +12,23 @@ public class AllItems : IService
     }
 }
 
+public class AllPointToGo : IService
+{
+    public readonly List<Transform> points;
+    public AllPointToGo(List<Transform> points) 
+    { 
+        this.points = points;
+    }
+}
+
 public class EntryPoint_Game : MonoBehaviour
 {
     [SerializeField]
     private InputManager _inputManager;
     [SerializeField]
     private List<ItemData> _items;
+    [SerializeField]
+    private List<Transform> _whereToGo;
 
     private void Awake()
     {
@@ -27,5 +38,6 @@ public class EntryPoint_Game : MonoBehaviour
         ServiceLocator.Instance.Register(new AllItems(_items));
         ServiceLocator.Instance.Register(new PickedItems(ServiceLocator.Instance.Get<EventBus>()));
         ServiceLocator.Instance.Register(new GameModel(ServiceLocator.Instance.Get<EventBus>()));
+        ServiceLocator.Instance.Register(new AllPointToGo(_whereToGo));
     }
 }

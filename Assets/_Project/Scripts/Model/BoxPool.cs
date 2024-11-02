@@ -6,8 +6,6 @@ public class BoxPool : MonoBehaviour
 {
     //TODO: ƒобавить сброс положени€, rotation и анимации коробок к стандратному состо€нию
     [SerializeField]
-    private List<ItemData> _items;
-    [SerializeField]
     private List<Box> _boxes;
 
     private EventBus _bus;
