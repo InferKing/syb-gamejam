@@ -9,5 +9,7 @@ namespace Model.Items
 		public ItemKey ItemKey { get; private set; }
 		[field: SerializeField]
 		public string Name { get; private set; }
+		[field: SerializeField]
+		public Sprite Sprite { get; private set; }
 	} 
 }
