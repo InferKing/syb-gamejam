@@ -1,37 +1,36 @@
 using UnityEngine;
+using System.Collections.Generic;
 using UnityEngine.AI;
 
 public class BoxMover : MonoBehaviour
 {
     [SerializeField] private PlayerInteractableFinder _player;
+    [SerializeField] private List<Transform> _points;
+    [SerializeField] private Transform _pointContainer;
     [SerializeField] private Rigidbody _rigidbody;
     [SerializeField] private float _runDistance;
     [SerializeField] private float _moveSpeedFactor;
+    [SerializeField] private float _minValue;
+    [SerializeField] private float _maxValue;
 
-    private NavMeshAgent agent;
+    private Vector3 _targetPosition;
+    private NavMeshAgent _agent;
 
     void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
-        agent.speed = _moveSpeedFactor;
+        _agent = GetComponent<NavMeshAgent>();
+        _agent.speed = _moveSpeedFactor;
+
+        _targetPosition = _points[Random.Range(0, _points.Count)].position;
     }
 
     void Update()
     {
-        float distanceToPlayer = Vector3.Distance(transform.position, _player.transform.position);
-
-        if (distanceToPlayer < _runDistance)
+        if (_targetPosition == transform.position)
         {
-            Flee();
+            _targetPosition = _points[Random.Range(0, _points.Count)].position;
+            _agent.SetDestination(_targetPosition);
+            // вобщем возвращаемся к поинтам)
         }
     }
-
-    void Flee()
-    {
-        Vector3 directionToPlayer = transform.position - _player.transform.position;
-        Vector3 fleeTarget = transform.position + directionToPlayer.normalized * _runDistance;
-
-        agent.SetDestination(fleeTarget);
-    }
-
 }
