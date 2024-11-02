@@ -37,7 +37,6 @@ public class GameModel : IService
             State = GameState.GetAll;
             _bus.Invoke(new SuccessTaskSignal(CurrentTask));
             _bus.Invoke(new GameStateChangedSignal(State));
-
         }
     }
 }
