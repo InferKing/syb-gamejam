@@ -8,11 +8,13 @@ public class Mover : MonoBehaviour
 
     [SerializeField] private float _rotationSpeed;
     [SerializeField] private float _moveSpeedFactor;
+    [SerializeField] private float _magnitude;
     [SerializeField] private float _maxSpeed;
     [SerializeField] private PlayerAnimationController _animator;
 
     private Rigidbody _rigidbody;
     public float MoveSpeed => _moveSpeedFactor;
+    public float Magnitude => _magnitude;
 
 
     private void Start()
@@ -28,6 +30,7 @@ public class Mover : MonoBehaviour
         {
             _rigidbody.AddForce(moveDirection * _moveSpeedFactor, ForceMode.Acceleration);
             Rotate(moveDirection);
+            _magnitude = _rigidbody.velocity.magnitude;
         }
 
         if (_rigidbody.velocity.magnitude > _maxSpeed)
