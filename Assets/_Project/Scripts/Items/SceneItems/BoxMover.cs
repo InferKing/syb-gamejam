@@ -10,22 +10,30 @@ public class BoxMover : MonoBehaviour
 
     [SerializeField]
     private NavMeshAgent _agent;
+    [SerializeField]
+    private Rigidbody _rb;
 
     private List<Transform> _whereToGo;
     private Coroutine _coroutine;
     private PlayerInteractableFinder _interactableFinder;
     private Vector3 _targetPosition;
+    private float _moveSpeed;
 
     public void MoveAway()
     {
         _whereToGo = ServiceLocator.Instance.Get<AllPointToGo>().points;
         _interactableFinder = FindObjectOfType<PlayerInteractableFinder>();
         _coroutine = StartCoroutine(AvoidPlayer());
+        _agent.enabled = true;
+        StartCoroutine(Boost());
     }
 
     public void Stop()
     {
-        StopCoroutine(_coroutine);
+        StopAllCoroutines();
+        _rb.mass = _rb.mass / 2f;
+        _agent.speed = _moveSpeed;
+        _agent.enabled = false;
     }
 
     private IEnumerator AvoidPlayer()
@@ -37,9 +45,22 @@ public class BoxMover : MonoBehaviour
             {
                 _targetPosition = FindFarthestPointInRadius(_whereToGo, _interactableFinder.transform.position, Radius);
             }
-            _agent.SetDestination(_targetPosition);
+            if (_agent.enabled)
+            {
+                _agent.SetDestination(_targetPosition);
+            }
             yield return null;
         }
+    }
+
+    private IEnumerator Boost()
+    {
+        _moveSpeed = _agent.speed;
+        _agent.speed = _moveSpeed * 4f;
+        _rb.mass =  _rb.mass * 2;
+
+        yield return new WaitForSeconds(2f);
+        _agent.speed = _moveSpeed;
     }
 
     private Vector3 FindFarthestPointInRadius(List<Transform> points, Vector3 playerPos, float radius)
