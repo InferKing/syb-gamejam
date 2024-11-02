@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Cfg_Char_Task_1
   m_EditorClassIdentifier: 
   <Description>k__BackingField: "\u042F \u043D\u0430\u0440\u0443\u0442\u043E \u0443\u0437\u0443\u043C\u0430\u043A\u0438"
+  <RoundTime>k__BackingField: 60
   <Items>k__BackingField:
   - {fileID: 11400000, guid: 4643d9fd79387594ba92d7f51ee1cd1f, type: 2}
   - {fileID: 11400000, guid: 61d942ad8d1949f4488c65f024eb7950, type: 2}

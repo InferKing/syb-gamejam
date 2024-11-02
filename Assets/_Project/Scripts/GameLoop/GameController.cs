@@ -34,6 +34,7 @@ public class GameController : MonoBehaviour
             }
 
             NewTask task = _taskManager.GetNewTask();
+            _hasTask = true;
             _bus?.Invoke(new NewTaskSignal(task));
 
             yield return null;

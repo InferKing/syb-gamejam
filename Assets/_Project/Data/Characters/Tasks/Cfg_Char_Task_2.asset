@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Description>k__BackingField: "\u042F \u043F\u043E\u0445\u0443\u0439 \u043C\u043D\u0435
     \u043F\u0430\u043D\u043A"
+  <RoundTime>k__BackingField: 60
   <Items>k__BackingField:
   - {fileID: 11400000, guid: 0a6c1504763f10846a73fb7495efa077, type: 2}
   - {fileID: 11400000, guid: 4643d9fd79387594ba92d7f51ee1cd1f, type: 2}
