@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class PlayerMover : MonoBehaviour
+public class Mover : MonoBehaviour
 {
     private const string Horizontal = nameof(Horizontal);
     private const string Vertical = nameof(Vertical);
@@ -10,9 +10,12 @@ public class PlayerMover : MonoBehaviour
     [SerializeField] private float _moveSpeedFactor;
     [SerializeField] private float _maxSpeed;
     [SerializeField] private PlayerAnimationController _animator;
+    [SerializeField] private CharacterController _controller;
 
+    private float _gravity = 20f;
     private Rigidbody _rigidbody;
     public float MoveSpeed => _moveSpeedFactor;
+
 
     private void Start()
     {
@@ -21,32 +24,18 @@ public class PlayerMover : MonoBehaviour
 
     void Update()
     {
-        Move();
-    }
+        var moveDirection = (Input.GetAxis("Horizontal") * transform.TransformDirection(Vector3.right) + Input.GetAxis("Vertical") * transform.TransformDirection(Vector3.forward)).normalized;
 
-    public void Move()
-    {
-        Vector3 direction = new Vector3(Input.GetAxisRaw(Horizontal), 0, Input.GetAxisRaw(Vertical)).normalized;
-
-        if (!Input.GetMouseButton(0) && !Input.GetMouseButton(1) && !Input.GetMouseButton(2))
+        if (moveDirection.magnitude > 0)
         {
-            JoyStickMove(direction);
-        }
-    }
-
-    public void JoyStickMove(Vector3 direction)
-    {
-        Vector3 distance = direction * _moveSpeedFactor * Time.deltaTime;
-        Vector3 nextPosition = transform.position + distance;
-
-        if (direction != Vector3.zero)
-        {
-            Rotate(direction);
+            _rigidbody.AddForce(moveDirection * _moveSpeedFactor, ForceMode.Acceleration);
+            Rotate(moveDirection);
         }
 
-        transform.position = transform.position + distance;
-
-        _animator.DoMove(direction.magnitude);
+        if (_rigidbody.velocity.magnitude > _maxSpeed)
+        {
+            _rigidbody.velocity = _rigidbody.velocity.normalized * _maxSpeed;
+        }
     }
 
     private void Rotate(Vector3 forward)
