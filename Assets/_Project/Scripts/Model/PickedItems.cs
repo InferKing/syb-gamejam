@@ -1,9 +1,13 @@
 using System.Collections.Generic;
+using System.Linq;
 using Model.Items;
 
-public class PickedItems
+public class PickedItems : IService
 {
+    // выбранные в терминале
     private List<ItemData> _pickedItems = new();
+    // подобранные игроком на сцене
+    private List<ItemData> _playerPickedItems = new();
     private EventBus _bus;
     
     public PickedItems(EventBus bus)
@@ -40,4 +44,7 @@ public class PickedItems
     {
         _pickedItems.Clear();
     }
+
+    public List<ItemData> Items => _pickedItems.ToList();
+    public List<ItemData> PlayerPickedItems => _playerPickedItems.ToList();
 }

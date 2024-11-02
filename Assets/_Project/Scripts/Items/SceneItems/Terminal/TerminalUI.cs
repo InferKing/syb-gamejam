@@ -10,6 +10,8 @@ public class TerminalUI : MonoBehaviour
     private List<TerminalTab> _tabs;
     [SerializeField]
     private List<Button> _buttons;
+    [SerializeField]
+    private AllItemsView _allItems;
 
     private NewTask _task;
 
@@ -17,6 +19,8 @@ public class TerminalUI : MonoBehaviour
     {
         _buttons[0].onClick.AddListener(() => OpenTab(0));
         _buttons[1].onClick.AddListener(() => OpenTab(1));
+
+        _allItems.Init();
     }
 
     public void Open()
@@ -42,5 +46,6 @@ public class TerminalUI : MonoBehaviour
         {
             _tabs[i].SetActiveTab(i == index, _task);
         }
+        _allItems.Show();
     }
 }
