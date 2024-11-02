@@ -31,6 +31,11 @@ public class TerminalUI : MonoBehaviour
         {
             return;
         }
+        if (model.State == GameState.NewTask)
+        {
+            model.State = GameState.InTerminal;
+            ServiceLocator.Instance.Get<EventBus>().Invoke(new GameStateChangedSignal(model.State));
+        }
         _root.SetActive(true);
 
         OpenTab(0);

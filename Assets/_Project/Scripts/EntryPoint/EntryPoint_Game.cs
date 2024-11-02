@@ -2,6 +2,7 @@ using Model.Characters;
 using Model.Items;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class AllItems : IService
 {
@@ -32,6 +33,8 @@ public class EntryPoint_Game : MonoBehaviour
 
     private void Awake()
     {
+        DOTween.Init();
+
         ServiceLocator.Initialize();
         ServiceLocator.Instance.Register(new EventBus());
         ServiceLocator.Instance.Register(_inputManager);

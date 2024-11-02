@@ -358,6 +358,7 @@ MonoBehaviour:
     m_Bits: 64
   _boxMover: {fileID: -1690602849365325443}
   _boxAnimation: {fileID: 4220564513620920541}
+  _pickupPrefab: {fileID: 2790899098715556257, guid: 735954a0ccb0101418b546d2beeec3df, type: 3}
 --- !u!114 &4220564513620920541
 MonoBehaviour:
   m_ObjectHideFlags: 0

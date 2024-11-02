@@ -28,7 +28,8 @@ public class AllItemsView : MonoBehaviour
     public void Show()
     {
         foreach (var item in _items) 
-        { 
+        {
+            item.ResetToDefault();
             item.UpdateView();
         }
     }

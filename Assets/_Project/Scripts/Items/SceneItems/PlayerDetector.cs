@@ -21,7 +21,7 @@ public class PlayerDetector : MonoBehaviour
     private void Update()
     {
         if (_changedState) return;
-        if (Vector3.Distance(_playerTransform.position, transform.position) < 5f)
+        if (Vector3.Distance(_playerTransform.position, transform.position) < 10f)
         {
             PlayerNearby?.Invoke();
             _changedState = true;
