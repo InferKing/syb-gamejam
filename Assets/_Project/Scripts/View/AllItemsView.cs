@@ -31,28 +31,5 @@ public class AllItemsView : MonoBehaviour
         { 
             item.UpdateView();
         }
-        //foreach (var item in ServiceLocator.Instance.Get<PickedItems>().PlayerPickedItems) 
-        //{
-        //    foreach (var view in _items)
-        //    {
-        //        if (item == view.Data)
-        //        {
-        //            view.SetComplete();
-        //        }
-        //        view.UpdateView();
-        //    }
-        //}
-        //foreach (var item in ServiceLocator.Instance.Get<PickedItems>().Items)
-        //{
-        //    foreach (var view in _items)
-        //    {
-        //        if (item == view.Data)
-        //        {
-        //            view.Toggle(true);
-        //        }
-        //        view.UpdateView();
-        //    }
-        //}
-
     }
 }

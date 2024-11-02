@@ -11,34 +11,47 @@ public class BoxPool : MonoBehaviour
     private List<Box> _boxes;
 
     private EventBus _bus;
+    private NewTask _task;
 
     private void Start()
     {
         _bus = ServiceLocator.Instance.Get<EventBus>();
         _bus.Subscribe<NewTaskSignal>(OnNewTask);
         _bus.Subscribe<PlayerEnterTerminalSignal>(OnPlayerEnterTerminal);
+        _bus.Subscribe<TerminalPickedAndClosedSignal>(OnTerminalClosed);
     }
 
     private void OnNewTask(NewTaskSignal signal)
     {
-        List<int> randomIndexes = new();
-        var items = signal.task.task.Items;
+        _task = signal.task;
+    }
 
-        for (int i = 0; i < items.Count; i++) 
+    private List<int> GenerateIndexes()
+    {
+        List<int> randomIndexes = new();
+        var items = _task.task.Items;
+
+        for (int i = 0; i < items.Count; i++)
         {
             int randomIndex;
             do
             {
-                randomIndex = Random.Range(0, _items.Count);
+                randomIndex = Random.Range(0, _boxes.Count);
             }
             while (randomIndexes.Contains(randomIndex));
             randomIndexes.Add(randomIndex);
         }
 
-        foreach (var index in randomIndexes)
+        return randomIndexes;
+    }
+
+    private void OnTerminalClosed(TerminalPickedAndClosedSignal signal)
+    {
+        List<int> randomIndexes = GenerateIndexes();
+
+        for (int i = 0; i < randomIndexes.Count; i++) 
         {
-            // указать предметы, которые выбрал пользователь!
-            //_boxes[index].SetItem()
+            _boxes[randomIndexes[i]].SetItem(ServiceLocator.Instance.Get<PickedItems>().Items[i]);
         }
     }
 
@@ -46,7 +59,8 @@ public class BoxPool : MonoBehaviour
     {
         foreach (var item in _boxes) 
         { 
-            item.ReplaceToStartPositionAndRotation();
+            // должно срабатывать только после win/lose
+            //item.ReplaceToStartPositionAndRotation();
         }
     }
 }

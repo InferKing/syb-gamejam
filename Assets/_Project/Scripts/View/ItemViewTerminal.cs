@@ -18,8 +18,8 @@ public class ItemViewTerminal : MonoBehaviour, IPointerDownHandler
     private ItemData _data;
     public ItemData Data => _data;
 
-    public bool IsCompleted { get; private set; }
-    public bool IsSelected { get; private set; }
+    public bool IsCompleted { get; private set; } = false;
+    public bool IsSelected { get; private set; } = false;
 
     public void SetView(ItemData data)
     {
@@ -55,9 +55,10 @@ public class ItemViewTerminal : MonoBehaviour, IPointerDownHandler
 
         PickedItems picked = ServiceLocator.Instance.Get<PickedItems>();
 
-        if (picked.Items.Count >= ServiceLocator.Instance.Get<GameModel>().CurrentTask.task.Items.Count)
+
+        if (picked.Items.Count == ServiceLocator.Instance.Get<GameModel>().CurrentTask.task.Items.Count)
         {
-            if (IsSelected && picked.Items.Contains(_data))
+            if (IsSelected)
             {
                 IsSelected = !IsSelected;
                 ServiceLocator.Instance.Get<EventBus>().Invoke(new UnpickedItemSignal(_data));
@@ -66,7 +67,14 @@ public class ItemViewTerminal : MonoBehaviour, IPointerDownHandler
         else
         {
             IsSelected = !IsSelected;
-            ServiceLocator.Instance.Get<EventBus>().Invoke(new PickedItemSignal(_data));
+            if (IsSelected)
+            {
+                ServiceLocator.Instance.Get<EventBus>().Invoke(new PickedItemSignal(_data));
+            }
+            else
+            {
+                ServiceLocator.Instance.Get<EventBus>().Invoke(new UnpickedItemSignal(_data));
+            }
         }
         UpdateView();
     }

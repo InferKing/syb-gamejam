@@ -17,6 +17,7 @@ public class PickedItems : IService
         _bus.Subscribe<UnpickedItemSignal>(OnUnpickedItem);
         _bus.Subscribe<FailedTaskSignal>(OnFailedTask);
         _bus.Subscribe<SuccessTaskSignal>(OnSuccessTask);
+        _bus.Subscribe<GetItemInSceneSignal>(OnGetItem);
     }
 
     private void OnPickedItem(PickedItemSignal signal)
@@ -43,6 +44,11 @@ public class PickedItems : IService
     private void OnSuccessTask(SuccessTaskSignal signal)
     {
         _pickedItems.Clear();
+    }
+
+    private void OnGetItem(GetItemInSceneSignal signal)
+    {
+        _playerPickedItems.Add(signal.data);
     }
 
     public List<ItemData> Items => _pickedItems.ToList();
