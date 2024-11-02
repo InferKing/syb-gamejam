@@ -10,7 +10,7 @@ public class Box : MonoBehaviour, IInteractable
     [SerializeField]
     private BoxMover _boxMover;
     [SerializeField]
-    private Animator _animator;
+    private BoxAnimation _boxAnimation;
 
     public bool CanInteract => true;
     private Vector3 _startPosition;
@@ -23,7 +23,7 @@ public class Box : MonoBehaviour, IInteractable
     public void Action()
     {
         _boxMover.Stop();
-        _animator.SetBool("IsDestroy", true);
+        _boxAnimation.Play();
     }
 
     private void Start()
@@ -42,6 +42,8 @@ public class Box : MonoBehaviour, IInteractable
         transform.position = _startPosition;
         transform.rotation = _startRotation;
         _item = null;
+
+        _boxAnimation.ResetSides();
     }
 
     public void SetItem(ItemData item)
