@@ -10,7 +10,7 @@ public class TerminalTab : MonoBehaviour
 
     public bool Enabled { get; private set; } = false;
 
-    public virtual void SetActiveTab(bool isActive)
+    public virtual void SetActiveTab(bool isActive, NewTask task)
     {
         Enabled = isActive;
 

@@ -10,6 +10,8 @@ namespace Model.Characters
         [field: SerializeField]
         public string Description { get; private set; }
         [field: SerializeField]
+        public float RoundTime { get; private set; }
+        [field: SerializeField]
         public List<ItemData> Items { get; private set; }
     }
 }
