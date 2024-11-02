@@ -2521,6 +2521,7 @@ GameObject:
   - component: {fileID: 332001173}
   - component: {fileID: 332001172}
   - component: {fileID: 332001171}
+  - component: {fileID: 332001174}
   m_Layer: 0
   m_Name: EnterHomeRoomTrigger
   m_TagString: Untagged
@@ -2572,6 +2573,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &332001174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 332001170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c620d511bde3d641ac9e7c08a521f3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &338753359
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3738,6 +3751,7 @@ GameObject:
   m_Component:
   - component: {fileID: 482034473}
   - component: {fileID: 482034472}
+  - component: {fileID: 482034474}
   m_Layer: 0
   m_Name: Virtual Camera
   m_TagString: Untagged
@@ -3800,6 +3814,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -90, z: 0}
+--- !u!114 &482034474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 482034471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02c9ee53cf99b1b4e99095869d668173, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cinemachineCamera: {fileID: 482034472}
 --- !u!4 &485898815 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4460031153685782386, guid: e90c6219f5923a341ad035afc99222c9, type: 3}
