@@ -25,6 +25,7 @@ public class Box : MonoBehaviour, IInteractable
     {
         transform.position = _startPosition;
         transform.rotation = _startRotation;
+        _item = null;
     }
 
     public void SetItem(ItemData item)

@@ -12,5 +12,7 @@ public class EntryPoint_Game : MonoBehaviour
         ServiceLocator.Initialize();
         ServiceLocator.Instance.Register(new EventBus());
         ServiceLocator.Instance.Register(_inputManager);
+
+        PickedItems playerPickedItems = new(ServiceLocator.Instance.Get<EventBus>());
     }
 }

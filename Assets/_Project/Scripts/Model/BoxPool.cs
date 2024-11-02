@@ -35,14 +35,18 @@ public class BoxPool : MonoBehaviour
             randomIndexes.Add(randomIndex);
         }
 
-        foreach (var idnex in randomIndexes)
+        foreach (var index in randomIndexes)
         {
-            //_boxes[index]
+            // указать предметы, которые выбрал пользователь!
+            //_boxes[index].SetItem()
         }
     }
 
     private void OnPlayerEnterTerminal(PlayerEnterTerminal terminal)
     {
-        // reset boxes
+        foreach (var item in _boxes) 
+        { 
+            item.ReplaceToStartPositionAndRotation();
+        }
     }
 }
