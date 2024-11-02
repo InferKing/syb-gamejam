@@ -10,9 +10,7 @@ public class Mover : MonoBehaviour
     [SerializeField] private float _moveSpeedFactor;
     [SerializeField] private float _maxSpeed;
     [SerializeField] private PlayerAnimationController _animator;
-    [SerializeField] private CharacterController _controller;
 
-    private float _gravity = 20f;
     private Rigidbody _rigidbody;
     public float MoveSpeed => _moveSpeedFactor;
 
