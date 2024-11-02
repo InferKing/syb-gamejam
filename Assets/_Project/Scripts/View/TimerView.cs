@@ -14,6 +14,8 @@ public class TimerView : MonoBehaviour
         _bus = ServiceLocator.Instance.Get<EventBus>();
 
         _bus.Subscribe<NewTaskSignal>(OnNewTask);
+        _bus.Subscribe<SuccessTaskSignal>(OnSuccessTask);
+        _bus.Subscribe<FailedTaskSignal>(OnFailedTask);
     }
 
     private void Update()
@@ -25,5 +27,17 @@ public class TimerView : MonoBehaviour
     private void OnNewTask(NewTaskSignal signal)
     {
         _changed = true;
+    }
+
+    private void OnSuccessTask(SuccessTaskSignal signal)
+    {
+        _changed = false;
+        _textTimer.text = "";
+    }
+
+    private void OnFailedTask(FailedTaskSignal signal)
+    {
+        _changed = false;
+        _textTimer.text = "";
     }
 }
