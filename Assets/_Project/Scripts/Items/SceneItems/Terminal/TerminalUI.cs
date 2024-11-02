@@ -11,6 +11,8 @@ public class TerminalUI : MonoBehaviour
     [SerializeField]
     private List<Button> _buttons;
 
+    private NewTask _task;
+
     private void Start()
     {
         _buttons[0].onClick.AddListener(() => OpenTab(0));
@@ -24,6 +26,11 @@ public class TerminalUI : MonoBehaviour
         OpenTab(0);
     }
 
+    public void SetCharacterInfo(NewTask task)
+    {
+        _task = task;
+    }
+
     public void Close()
     {
         _root.SetActive(false);
@@ -33,7 +40,7 @@ public class TerminalUI : MonoBehaviour
     {
         for (int i = 0; i < _tabs.Count; i++) 
         {
-            _tabs[i].SetActiveTab(i == index);
+            _tabs[i].SetActiveTab(i == index, _task);
         }
     }
 }
