@@ -9,6 +9,8 @@ public class Box : MonoBehaviour, IInteractable
     private LayerMask _usedMask;
     [SerializeField]
     private BoxMover _boxMover;
+    [SerializeField]
+    private Animator _animator;
 
     public bool CanInteract => true;
     private Vector3 _startPosition;
@@ -21,6 +23,7 @@ public class Box : MonoBehaviour, IInteractable
     public void Action()
     {
         _boxMover.Stop();
+        _animator.SetBool("IsDestroy", true);
     }
 
     private void Start()
