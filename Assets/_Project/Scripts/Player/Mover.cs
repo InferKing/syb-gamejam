@@ -22,7 +22,7 @@ public class Mover : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         var moveDirection = (Input.GetAxis("Horizontal") * transform.TransformDirection(Vector3.right) + Input.GetAxis("Vertical") * transform.TransformDirection(Vector3.forward)).normalized;
 
