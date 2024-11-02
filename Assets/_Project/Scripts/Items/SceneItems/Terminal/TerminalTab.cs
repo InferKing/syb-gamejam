@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,7 +10,7 @@ public class TerminalTab : MonoBehaviour
 
     public bool Enabled { get; private set; } = false;
 
-    public void SetActiveTab(bool isActive)
+    public virtual void SetActiveTab(bool isActive)
     {
         Enabled = isActive;
 
