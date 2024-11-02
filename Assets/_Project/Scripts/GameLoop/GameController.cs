@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour
     private TaskManager _taskManager;
 
     private bool _hasTask = false;
+    private GameState _gameState = GameState.Idle;
     private EventBus _bus;
 
     private void Start()
