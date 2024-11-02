@@ -16,7 +16,7 @@ public class BoxPool : MonoBehaviour
     {
         _bus = ServiceLocator.Instance.Get<EventBus>();
         _bus.Subscribe<NewTaskSignal>(OnNewTask);
-        _bus.Subscribe<PlayerEnterTerminal>(OnPlayerEnterTerminal);
+        _bus.Subscribe<PlayerEnterTerminalSignal>(OnPlayerEnterTerminal);
     }
 
     private void OnNewTask(NewTaskSignal signal)
@@ -41,7 +41,7 @@ public class BoxPool : MonoBehaviour
         }
     }
 
-    private void OnPlayerEnterTerminal(PlayerEnterTerminal terminal)
+    private void OnPlayerEnterTerminal(PlayerEnterTerminalSignal terminal)
     {
         // reset boxes
     }
