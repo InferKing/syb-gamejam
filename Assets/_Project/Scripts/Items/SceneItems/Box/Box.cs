@@ -11,8 +11,10 @@ public class Box : MonoBehaviour, IInteractable
     private BoxMover _boxMover;
     [SerializeField]
     private BoxAnimation _boxAnimation;
+    [SerializeField]
+    private WorldSpacePickup _pickupPrefab;
 
-    public bool CanInteract => true;
+    public bool CanInteract { get; private set; } = true;
     private Vector3 _startPosition;
     private Quaternion _startRotation;
     private ItemData _item;
@@ -24,6 +26,12 @@ public class Box : MonoBehaviour, IInteractable
     {
         _boxMover.Stop();
         _boxAnimation.Play();
+
+        var pickup = Instantiate(_pickupPrefab);
+        pickup.PlayAnimation(_item, transform.position);
+        CanInteract = false;
+
+        ServiceLocator.Instance.Get<EventBus>().Invoke(new GetItemInSceneSignal(_item));
     }
 
     private void Start()
@@ -44,6 +52,7 @@ public class Box : MonoBehaviour, IInteractable
         _item = null;
 
         _boxAnimation.ResetSides();
+        CanInteract = true;
     }
 
     public void SetItem(ItemData item)

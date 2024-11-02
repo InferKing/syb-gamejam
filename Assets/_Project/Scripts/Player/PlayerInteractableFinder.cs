@@ -6,14 +6,14 @@ using UnityEngine;
 public class PlayerInteractableFinder : MonoBehaviour
 {
     [SerializeField]
-    private float _radius = 3f;
+    private float _radius = 1f;
     [SerializeField]
     private LayerMask _layer;
 
     private IInteractable _interactable;
 
     private Collider[] _colliders;
-    private WaitForSeconds _delay = new(.1f);
+    private WaitForSeconds _delay = new(.05f);
     private InputManager _inputManager;
 
     private void Start()

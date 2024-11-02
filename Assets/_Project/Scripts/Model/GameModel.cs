@@ -12,12 +12,13 @@ public class GameModel : IService
     }
 
     public NewTask CurrentTask { get; private set; }
-    public GameState State { get; private set; } = GameState.Idle;
+    public GameState State { get; set; } = GameState.Idle;
     
     private void OnNewTask(NewTaskSignal signal)
     {
         CurrentTask = signal.task;
         State = GameState.NewTask;
+        _bus.Invoke(new GameStateChangedSignal(State));
     }
 
     private void OnTerminalClosed(TerminalPickedAndClosedSignal signal)
@@ -25,6 +26,7 @@ public class GameModel : IService
         if (State == GameState.InTerminal)
         {
             State = GameState.PickedInTerminal;
+            _bus.Invoke(new GameStateChangedSignal(State));
         }
     }
 
@@ -33,6 +35,8 @@ public class GameModel : IService
         if (CurrentTask.task.Items.Count == ServiceLocator.Instance.Get<PickedItems>().PlayerPickedItems.Count)
         {
             State = GameState.GetAll;
+            _bus.Invoke(new SuccessTaskSignal(CurrentTask));
+            _bus.Invoke(new GameStateChangedSignal(State));
         }
     }
 }
