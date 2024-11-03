@@ -12,6 +12,10 @@ namespace Model.Characters
         [field: SerializeField]
         public float RoundTime { get; private set; }
         [field: SerializeField]
-        public List<ItemData> Items { get; private set; }
+        public int MaxItems { get; private set; }
+        [field: SerializeField]
+        public int MinCoefToWin { get; private set; }
+        [field: SerializeField]
+        public List<DictUnit> Coefs { get; private set; }
     }
 }

@@ -21,7 +21,7 @@ public class TaskManager : MonoBehaviour
     [SerializeField]
     private List<CharacterData> _characters;
 
-    private Dictionary<CharacterData, List<CharacterTask>> _usedTasks = new();
+    private Dictionary<CharacterData, CharacterTask> _usedTasks = new();
     private EventBus _bus;
 
     private void Start()
@@ -33,22 +33,10 @@ public class TaskManager : MonoBehaviour
     {
         foreach (var character in _characters)
         {
-            if (_usedTasks.ContainsKey(character) && _usedTasks[character].Count < character.Tasks.Count)
+            if (!_usedTasks.ContainsKey(character))
             {
-                if (_usedTasks[character].Count == 0)
-                {
-                    _usedTasks[character] = new();
-                }
-                _usedTasks[character].Add(character.Tasks[_usedTasks[character].Count]);
-                return new NewTask(_usedTasks[character][^1], character);
-            }
-        }
-        foreach (var character in _characters) 
-        {
-            if (!_usedTasks.ContainsKey(character)) 
-            {
-                _usedTasks[character] = new() { character.Tasks[0] };
-                return new NewTask(character.Tasks[0], character);
+                _usedTasks[character] = character.Task;
+                return new NewTask(_usedTasks[character], character);
             }
         }
 #if UNITY_EDITOR

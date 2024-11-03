@@ -32,7 +32,7 @@ public class GameModel : IService
 
     private void OnGetItem(GetItemInSceneSignal signal)
     {
-        if (CurrentTask.task.Items.Count == ServiceLocator.Instance.Get<PickedItems>().PlayerPickedItems.Count)
+        if (CurrentTask.task.MaxItems == ServiceLocator.Instance.Get<PickedItems>().PlayerPickedItems.Count)
         {
             State = GameState.GetAll;
             _bus.Invoke(new SuccessTaskSignal(CurrentTask));

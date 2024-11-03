@@ -28,9 +28,9 @@ public class BoxPool : MonoBehaviour
     private List<int> GenerateIndexes()
     {
         List<int> randomIndexes = new();
-        var items = _task.task.Items;
+        var items = _task.task.MaxItems;
 
-        for (int i = 0; i < items.Count; i++)
+        for (int i = 0; i < items; i++)
         {
             int randomIndex;
             do

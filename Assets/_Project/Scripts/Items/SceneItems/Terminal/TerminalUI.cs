@@ -50,7 +50,7 @@ public class TerminalUI : MonoBehaviour
     public void Close()
     {
         int pickedAmount = ServiceLocator.Instance.Get<PickedItems>().Items.Count;
-        int taskAmount = ServiceLocator.Instance.Get<GameModel>().CurrentTask.task.Items.Count;
+        int taskAmount = ServiceLocator.Instance.Get<GameModel>().CurrentTask.task.MaxItems;
         GameModel model = ServiceLocator.Instance.Get<GameModel>();
 
         if (pickedAmount == taskAmount)
