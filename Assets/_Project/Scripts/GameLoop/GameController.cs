@@ -30,6 +30,7 @@ public class GameController : MonoBehaviour
         {
             if (_hasTask)
             {
+                yield return null;
                 continue;
             }
 
