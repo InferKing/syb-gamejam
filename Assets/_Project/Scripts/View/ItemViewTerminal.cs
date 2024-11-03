@@ -56,7 +56,7 @@ public class ItemViewTerminal : MonoBehaviour, IPointerDownHandler
         PickedItems picked = ServiceLocator.Instance.Get<PickedItems>();
 
 
-        if (picked.Items.Count == ServiceLocator.Instance.Get<GameModel>().CurrentTask.task.Items.Count)
+        if (picked.Items.Count == ServiceLocator.Instance.Get<GameModel>().CurrentTask.task.MaxItems)
         {
             if (IsSelected)
             {

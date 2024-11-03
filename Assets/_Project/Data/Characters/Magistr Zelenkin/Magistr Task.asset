@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cb88688ad3c91a46a7949fd9264c6d5, type: 3}
+  m_Name: Magistr Task
+  m_EditorClassIdentifier: 
+  <Description>k__BackingField: Magistr Zelenkin Magistr Zelenkin Magistr Zelenkin
+    Magistr Zelenkin
+  <RoundTime>k__BackingField: 60
+  <MaxItems>k__BackingField: 1
+  <MinCoefToWin>k__BackingField: 4
+  <Coefs>k__BackingField:
+  - key: 0
+    coef: 0
+  - key: 1
+    coef: 0
+  - key: 2
+    coef: 0
+  - key: 3
+    coef: 4
+  - key: 4
+    coef: 4
+  - key: 5
+    coef: 0
+  - key: 6
+    coef: 0
+  - key: 7
+    coef: 0
+  - key: 8
+    coef: 0
+  - key: 9
+    coef: 0
+  - key: 10
+    coef: 0
+  - key: 11
+    coef: 0
+  - key: 12
+    coef: 0
+  - key: 13
+    coef: 0

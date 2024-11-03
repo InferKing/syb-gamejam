@@ -10,9 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0cbdab164e4e9ca47a3e796fed8af1a9, type: 3}
-  m_Name: Cfg_Char_Hitler
+  m_Name: Mishel Uitli
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: "\u0413\u0438\u0442\u043B\u0435\u0440"
-  <Tasks>k__BackingField:
-  - {fileID: 11400000, guid: 01d18d1be65e6cb4386bebef49a29ad0, type: 2}
-  - {fileID: 11400000, guid: f2babcda49a17d84291cbc926a966875, type: 2}
+  <Name>k__BackingField: "\u041C\u0438\u0448\u0435\u043B\u044C \u0423\u0438\u0442\u043B\u0438"
+  <Task>k__BackingField: {fileID: 11400000, guid: ac5d30aae714a4c43a6e2ad8677c0322, type: 2}

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9cb88688ad3c91a46a7949fd9264c6d5, type: 3}
-  m_Name: Cfg_Char_Task_1
+  m_Name: Mishel Task
   m_EditorClassIdentifier: 
-  <Description>k__BackingField: "\u042F \u043D\u0430\u0440\u0443\u0442\u043E \u0443\u0437\u0443\u043C\u0430\u043A\u0438"
+  <Description>k__BackingField: "\u042F \u043B\u044E\u0431\u043B\u044E \u043F\u0438\u0442\u044C
+    \u043F\u0438\u0432\u043E. "
   <RoundTime>k__BackingField: 60
-  <Items>k__BackingField:
-  - {fileID: 11400000, guid: 4643d9fd79387594ba92d7f51ee1cd1f, type: 2}
-  - {fileID: 11400000, guid: 61d942ad8d1949f4488c65f024eb7950, type: 2}
-  - {fileID: 11400000, guid: 761b5b431a1fd934fa9799a1d53458c5, type: 2}
+  <MaxItems>k__BackingField: 3
+  <MinCoefToWin>k__BackingField: 10
+  <Coefs>k__BackingField: []
