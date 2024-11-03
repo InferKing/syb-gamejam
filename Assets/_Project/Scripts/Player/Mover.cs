@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -11,6 +12,7 @@ public class Mover : MonoBehaviour
     [SerializeField] private float _impulsePower;
     [SerializeField] private float _maxSpeed;
     [SerializeField] private PlayerAnimationController _animator;
+    [SerializeField] private float _delaySteps;
 
     private Rigidbody _rigidbody;
     public float MoveSpeed => _moveSpeedFactor;
@@ -23,7 +25,7 @@ public class Mover : MonoBehaviour
     void FixedUpdate()
     {
         Vector3 moveDirection = new Vector3(Input.GetAxisRaw(Horizontal), 0, Input.GetAxisRaw(Vertical)).normalized;
-
+        
         if (moveDirection.magnitude > 0)
         {
             if (_rigidbody.velocity.magnitude < 1f)
