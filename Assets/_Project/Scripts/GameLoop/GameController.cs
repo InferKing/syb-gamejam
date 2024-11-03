@@ -35,6 +35,7 @@ public class GameController : MonoBehaviour
 
             if (ServiceLocator.Instance.Get<GameModel>().State != GameState.Idle)
             {
+                yield return null;
                 continue;
             }
 
