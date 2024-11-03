@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 public class BoxMover : MonoBehaviour
 {
-    private const float Radius = 15f;
+    private const float Radius = 10f;
 
     [SerializeField]
     private NavMeshAgent _agent;
@@ -31,7 +31,7 @@ public class BoxMover : MonoBehaviour
     public void Stop()
     {
         StopAllCoroutines();
-        _rb.mass = _rb.mass / 2f;
+        _rb.mass = _rb.mass / 5f;
         _agent.speed = _moveSpeed;
         _agent.enabled = false;
     }
@@ -41,7 +41,7 @@ public class BoxMover : MonoBehaviour
         _targetPosition = FindFarthestPointInRadius(_whereToGo, _interactableFinder.transform.position, Radius);
         while (true)
         {
-            if (Vector3.Distance(_targetPosition, _agent.transform.position) < 1f)
+            if (Vector3.Distance(_targetPosition, _agent.transform.position) < 2f)
             {
                 _targetPosition = FindFarthestPointInRadius(_whereToGo, _interactableFinder.transform.position, Radius);
             }
@@ -57,7 +57,7 @@ public class BoxMover : MonoBehaviour
     {
         _moveSpeed = _agent.speed;
         _agent.speed = _moveSpeed * 4f;
-        _rb.mass =  _rb.mass * 2;
+        _rb.mass =  _rb.mass * 5;
 
         yield return new WaitForSeconds(2f);
         _agent.speed = _moveSpeed;

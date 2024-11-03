@@ -30,7 +30,11 @@ public class GameController : MonoBehaviour
         {
             if (_hasTask)
             {
-                yield return _delay10;
+                continue;
+            }
+
+            if (ServiceLocator.Instance.Get<GameModel>().State != GameState.Idle)
+            {
                 continue;
             }
 
@@ -38,7 +42,7 @@ public class GameController : MonoBehaviour
             _hasTask = true;
             _bus?.Invoke(new NewTaskSignal(task));
 
-            yield return null;
+            yield return _delay10;
         }
     }
 

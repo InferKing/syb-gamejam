@@ -14,12 +14,12 @@ public class TaskTimer : MonoBehaviour, IService
         _bus = ServiceLocator.Instance.Get<EventBus>();
         _bus.Subscribe<NewTaskSignal>(OnNewTask);
         _bus.Subscribe<SuccessTaskSignal>(OnSuccessTask);
+        _bus.Subscribe<TerminalPickedAndClosedSignal>(OnPickedTerminal);
     }
 
     private void OnNewTask(NewTaskSignal signal) 
     {
         _task = signal.task;
-        _timer = StartCoroutine(Timer());
     }
 
     private void OnSuccessTask(SuccessTaskSignal signal)
@@ -27,6 +27,11 @@ public class TaskTimer : MonoBehaviour, IService
         _task = null;
         StopCoroutine(_timer);
         _timer = null;
+    }
+
+    private void OnPickedTerminal(TerminalPickedAndClosedSignal signal)
+    {
+        _timer = StartCoroutine(Timer());
     }
 
     private IEnumerator Timer()

@@ -39,11 +39,13 @@ public class PickedItems : IService
     private void OnFailedTask(FailedTaskSignal signal)
     {
         _pickedItems.Clear();
+        _playerPickedItems.Clear();
     }
 
     private void OnSuccessTask(SuccessTaskSignal signal)
     {
         _pickedItems.Clear();
+        _playerPickedItems.Clear();
     }
 
     private void OnGetItem(GetItemInSceneSignal signal)
