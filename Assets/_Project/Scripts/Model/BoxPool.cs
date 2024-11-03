@@ -17,6 +17,7 @@ public class BoxPool : MonoBehaviour
         _bus.Subscribe<NewTaskSignal>(OnNewTask);
         _bus.Subscribe<PlayerEnterTerminalSignal>(OnPlayerEnterTerminal);
         _bus.Subscribe<TerminalPickedAndClosedSignal>(OnTerminalClosed);
+        _bus.Subscribe<ResetSceneSignal>(OnResetScene);
     }
 
     private void OnNewTask(NewTaskSignal signal)
@@ -50,6 +51,14 @@ public class BoxPool : MonoBehaviour
         for (int i = 0; i < randomIndexes.Count; i++) 
         {
             _boxes[randomIndexes[i]].SetItem(ServiceLocator.Instance.Get<PickedItems>().Items[i]);
+        }
+    }
+
+    private void OnResetScene(ResetSceneSignal signal)
+    {
+        foreach (var item in _boxes)
+        {
+            item.ReplaceToStartPositionAndRotation();
         }
     }
 

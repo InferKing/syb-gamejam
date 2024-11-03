@@ -7,6 +7,10 @@ public class PlayerEnterTerminalTrigger : MonoBehaviour
         if (other.gameObject.TryGetComponent(out PlayerInteractableFinder finder))
         {
             ServiceLocator.Instance.Get<EventBus>().Invoke(new PlayerEnterTerminalSignal());
+            if (ServiceLocator.Instance.Get<GameModel>().State == GameState.NewTask)
+            {
+                ServiceLocator.Instance.Get<EventBus>().Invoke(new ResetSceneSignal());
+            }
         }
     }
 

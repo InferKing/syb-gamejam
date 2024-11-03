@@ -1,5 +1,6 @@
 using UnityEngine;
 using Model.Items;
+using DG.Tweening;
 
 public class Box : MonoBehaviour, IInteractable
 {
@@ -47,8 +48,8 @@ public class Box : MonoBehaviour, IInteractable
             _playerDetector.enabled = false;
             gameObject.layer = GetIndexOfLayer(_baseMask);
         }
-        transform.position = _startPosition;
-        transform.rotation = _startRotation;
+        transform.DOMove(_startPosition, 1f);
+        transform.DORotate(_startRotation.eulerAngles, 1f);
         _item = null;
 
         _boxAnimation.ResetSides();
