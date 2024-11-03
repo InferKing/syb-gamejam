@@ -8,14 +8,12 @@ public class Mover : MonoBehaviour
 
     [SerializeField] private float _rotationSpeed;
     [SerializeField] private float _moveSpeedFactor;
-    [SerializeField] private float _magnitude;
+    [SerializeField] private float _impulsePower;
     [SerializeField] private float _maxSpeed;
     [SerializeField] private PlayerAnimationController _animator;
 
     private Rigidbody _rigidbody;
     public float MoveSpeed => _moveSpeedFactor;
-    public float Magnitude => _magnitude;
-
 
     private void Start()
     {
@@ -24,14 +22,17 @@ public class Mover : MonoBehaviour
 
     void FixedUpdate()
     {
-        //var moveDirection = (Input.GetAxis("Horizontal") * transform.TransformDirection(Vector3.right) + Input.GetAxis("Vertical") * transform.TransformDirection(Vector3.forward)).normalized;
         Vector3 moveDirection = new Vector3(Input.GetAxisRaw(Horizontal), 0, Input.GetAxisRaw(Vertical)).normalized;
 
         if (moveDirection.magnitude > 0)
         {
+            if (_rigidbody.velocity.magnitude < 1f)
+            {
+                _rigidbody.AddForce(moveDirection * _impulsePower, ForceMode.Impulse);
+            }
+
             _rigidbody.AddForce(moveDirection * _moveSpeedFactor, ForceMode.Acceleration);
             Rotate(moveDirection);
-            _magnitude = _rigidbody.velocity.magnitude;
         }
 
         if (_rigidbody.velocity.magnitude > _maxSpeed)
