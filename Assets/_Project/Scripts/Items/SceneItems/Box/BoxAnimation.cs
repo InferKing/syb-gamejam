@@ -38,7 +38,7 @@ public class BoxAnimation : MonoBehaviour
         {
             Vector3 direction = item.transform.position - _explosionPoint.position;
             var rb = item.AddComponent<Rigidbody>();
-            rb.AddExplosionForce(20f, _explosionPoint.position, 5f);
+            rb.AddExplosionForce(50f, _explosionPoint.position, 5f);
         }
         _collider.enabled = false;
     }

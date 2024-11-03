@@ -40,7 +40,7 @@ Transform:
   - {fileID: 6211046717870307127}
   - {fileID: 2183972854425393180}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &2972612750981571013
 MeshRenderer:
@@ -130,7 +130,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!114 &4808845800898632522
 MonoBehaviour:
@@ -145,9 +145,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rotationSpeed: 5
-  _moveSpeedFactor: 10
-  _magnitude: 0
-  _maxSpeed: 10
+  _moveSpeedFactor: 5
+  _impulsePower: 0.5
+  _maxSpeed: 6
   _animator: {fileID: 0}
 --- !u!114 &2528256312918909377
 MonoBehaviour:
@@ -309,10 +309,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _audioSource: {fileID: 8257277916631857694}
-  _fallBoxSounds: []
+  _fallBoxSounds:
+  - {fileID: 8300000, guid: 2c6a4f273ddce284fb1bbe5a66c3aca9, type: 3}
+  - {fileID: 8300000, guid: b70ca9816216068488102aab806cfa9d, type: 3}
+  - {fileID: 8300000, guid: 4975ed36726148e428cf84a580bac9f6, type: 3}
+  - {fileID: 8300000, guid: 0b6ecdf25c127f44da0b6dec4e622181, type: 3}
+  - {fileID: 8300000, guid: 6dfa732e9b4a0f44abbbbd6e5aebe4e8, type: 3}
+  - {fileID: 8300000, guid: c1eba33f9debe9044ae006b4a063bb7e, type: 3}
+  _clickSounds:
+  - {fileID: 8300000, guid: 45b8a5c441f5a34419781028582cd8d9, type: 3}
+  - {fileID: 8300000, guid: d154733a47d4ea54ab7686035748e7e1, type: 3}
+  - {fileID: 8300000, guid: a21107ec2942f2340bf17ed1bdd7bd85, type: 3}
+  - {fileID: 8300000, guid: 928338d9ee18c3143af9ad08d5c817f9, type: 3}
+  - {fileID: 8300000, guid: e8c697a8e492f334aae4b6d3b846b326, type: 3}
   _stepsSound: {fileID: 0}
-  _setOffTerminalSound: {fileID: 0}
-  _setOnTerminalSound: {fileID: 0}
+  _setOffTerminalSound: {fileID: 8300000, guid: 53804eccc421d4945bfc017016230521, type: 3}
+  _setOnTerminalSound: {fileID: 8300000, guid: 9c893968e7c818347af6e0d64cef0f28, type: 3}
   _MainThemeMusic: {fileID: 0}
   _MainMenuMusic: {fileID: 0}
   _RunToBoxMusic: {fileID: 0}
@@ -342,7 +354,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8603211878016394876}
   m_LocalRotation: {x: -0.9992246, y: -0, z: -0, w: 0.039374188}
-  m_LocalPosition: {x: 0, y: -0.226, z: 0.033}
+  m_LocalPosition: {x: -0.232, y: -0.246, z: 0.032}
   m_LocalScale: {x: 0.6666667, y: 0.6666667, z: 0.6666667}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -358,7 +370,7 @@ ParticleSystem:
   m_GameObject: {fileID: 8603211878016394876}
   serializedVersion: 8
   lengthInSec: 2
-  simulationSpeed: 1
+  simulationSpeed: 0.68
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
@@ -432,7 +444,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1.2
+      scalar: 0.6
       minScalar: 0.5
       maxCurve:
         serializedVersion: 2
@@ -485,7 +497,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 2
+      scalar: 1.9
       minScalar: 1.2
       maxCurve:
         serializedVersion: 2
@@ -5179,15 +5191,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1be1072e62a396346baa790199953098, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1be1072e62a396346baa790199953098, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.415
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1be1072e62a396346baa790199953098, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1be1072e62a396346baa790199953098, type: 3}
       propertyPath: m_LocalRotation.w
