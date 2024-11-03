@@ -17,4 +17,8 @@ MonoBehaviour:
   <RoundTime>k__BackingField: 60
   <MaxItems>k__BackingField: 1
   <MinCoefToWin>k__BackingField: 4
-  <Coefs>k__BackingField: []
+  <Coefs>k__BackingField:
+  - key: 0
+    coef: 0
+  - key: 0
+    coef: 0
