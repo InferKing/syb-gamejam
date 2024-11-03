@@ -2,6 +2,8 @@ using UnityEngine;
 using Model.Items;
 using DG.Tweening;
 
+[ RequireComponent(typeof(Rigidbody))]
+[ RequireComponent(typeof(Collider))]
 public class Box : MonoBehaviour, IInteractable
 {
     [SerializeField]
@@ -20,6 +22,7 @@ public class Box : MonoBehaviour, IInteractable
     private Quaternion _startRotation;
     private ItemData _item;
     private PlayerDetector _playerDetector;
+    private Rigidbody _rigidBody;
 
     public Vector3 Position => transform.position;
 
@@ -31,8 +34,19 @@ public class Box : MonoBehaviour, IInteractable
         var pickup = Instantiate(_pickupPrefab);
         pickup.PlayAnimation(_item, transform.position);
         CanInteract = false;
-
+        _rigidBody = GetComponent<Rigidbody>();
         ServiceLocator.Instance.Get<EventBus>().Invoke(new GetItemInSceneSignal(_item));
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.TryGetComponent(out Floor floor) || collision.gameObject.TryGetComponent(out PlayerInteractableFinder finder))
+        {
+            if (_rigidBody.velocity.magnitude > 0.3f)
+            {
+                ServiceLocator.Instance.Get<EventBus>().Invoke(new BoxFallSoundSignal());
+            }
+        }
     }
 
     private void Start()

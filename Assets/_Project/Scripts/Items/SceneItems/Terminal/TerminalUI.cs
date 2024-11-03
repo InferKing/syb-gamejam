@@ -40,7 +40,7 @@ public class TerminalUI : MonoBehaviour
 
         OpenTab(0);
         ServiceLocator.Instance.Get<EventBus>().Invoke(new SetOnTerminalSignal());
-        //ServiceLocator.Instance.Get<EventBus>().Invoke(new CantMoveSignal());
+        ServiceLocator.Instance.Get<EventBus>().Invoke(new CantMoveSignal());
     }
 
     public void SetCharacterInfo(NewTask task)
@@ -65,7 +65,7 @@ public class TerminalUI : MonoBehaviour
         }
         // Проверка в каком состоянии вышел
 
-       // ServiceLocator.Instance.Get<EventBus>().Invoke(new CanMoveSignal());
+        ServiceLocator.Instance.Get<EventBus>().Invoke(new CanMoveSignal());
         ServiceLocator.Instance.Get<EventBus>().Invoke(new SetOffTerminalSignal());
         _root.SetActive(false);
     }
