@@ -18,6 +18,7 @@ public class Terminal : MonoBehaviour, IInteractable
     public void Action()
     {
         _ui.Open();
+        ServiceLocator.Instance.Get<EventBus>().Invoke(new SetOnTerminalSignal());
     }
 
     private void OnNewTask(NewTaskSignal signal)

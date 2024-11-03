@@ -62,6 +62,7 @@ public class TerminalUI : MonoBehaviour
             return;
         }
         // Проверка в каком состоянии вышел
+        ServiceLocator.Instance.Get<EventBus>().Invoke(new SetOffTerminalSignal());
         _root.SetActive(false);
     }
 

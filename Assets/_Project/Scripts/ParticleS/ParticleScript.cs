@@ -14,7 +14,7 @@ public class ParticleScript : MonoBehaviour
             if (!_particleSystem.isPlaying)
             {
                 _particleSystem.Play();
-            }       
+            }
         }
         else
         {

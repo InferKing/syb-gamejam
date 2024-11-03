@@ -32,7 +32,7 @@ public class AudioController : MonoBehaviour
 
     private void PlayMenuTheme()
     {
-
+        
     }
 
     private void PlayBoxFallSound(BoxFallSoundSignal signal)
@@ -42,17 +42,17 @@ public class AudioController : MonoBehaviour
 
     private void PlaySetOnTerminal(SetOnTerminalSignal signal)
     {
-
+        _audioSource.PlayOneShot(_setOnTerminalSound);
     }
 
     private void PlaySetOffTerminal(SetOffTerminalSignal signal)
     {
-
+        _audioSource.PlayOneShot(_setOffTerminalSound);
     }
 
     private void PlayStepsSound(StepSoundSignal signal)
     {
-
+        _audioSource.PlayOneShot(_stepsSound);
     }
 
     private void PlayRunToBoxMusic(RunToBoxSignal signal)
