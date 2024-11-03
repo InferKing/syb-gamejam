@@ -18,5 +18,11 @@ namespace Model.Characters
     {
         public ItemKey key;
         public int coef;
+
+        public DictUnit(ItemKey key, int coef)
+        {
+            this.key = key;
+            this.coef = coef;
+        }
     }
 }
