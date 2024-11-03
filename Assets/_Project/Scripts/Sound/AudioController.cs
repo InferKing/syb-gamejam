@@ -1,10 +1,11 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class AudioController : MonoBehaviour
 {
     [SerializeField] private AudioSource _audioSource;
 
-    [SerializeField] private AudioClip _fallBoxSound;
+    [SerializeField] private List<AudioClip> _fallBoxSounds;
     [SerializeField] private AudioClip _stepsSound;
     [SerializeField] private AudioClip _setOffTerminalSound;
     [SerializeField] private AudioClip _setOnTerminalSound;
@@ -36,7 +37,7 @@ public class AudioController : MonoBehaviour
 
     private void PlayBoxFallSound(BoxFallSoundSignal signal)
     {
-
+        _audioSource.PlayOneShot(_fallBoxSounds[Random.Range(0, _fallBoxSounds.Count)]);
     }
 
     private void PlaySetOnTerminal(SetOnTerminalSignal signal)

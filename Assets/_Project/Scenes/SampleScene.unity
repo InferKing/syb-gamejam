@@ -12433,7 +12433,8 @@ PrefabInstance:
       value: door
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 65702495048144492, guid: e2abee3a61fc0bf489e1b69a29afb836, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2abee3a61fc0bf489e1b69a29afb836, type: 3}
@@ -19212,6 +19213,54 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6074387679700837144, guid: ba9ee65a46bcd53418a7ae4198210db6, type: 3}
+      propertyPath: _MainMenuMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: e5777a168cb168e429fd217666ade5c7, type: 3}
+    - target: {fileID: 6074387679700837144, guid: ba9ee65a46bcd53418a7ae4198210db6, type: 3}
+      propertyPath: _fallBoxSounds.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6074387679700837144, guid: ba9ee65a46bcd53418a7ae4198210db6, type: 3}
+      propertyPath: _fallBoxSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 37b77a07397bf16458b84f2563f5f01d, type: 3}
+    - target: {fileID: 6074387679700837144, guid: ba9ee65a46bcd53418a7ae4198210db6, type: 3}
+      propertyPath: _fallBoxSounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 12d01e69781980040bdbbc4272cdde77, type: 3}
+    - target: {fileID: 6074387679700837144, guid: ba9ee65a46bcd53418a7ae4198210db6, type: 3}
+      propertyPath: _fallBoxSounds.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 3065eb6e7cc3139448eb5c9e64e5bbb9, type: 3}
+    - target: {fileID: 6074387679700837144, guid: ba9ee65a46bcd53418a7ae4198210db6, type: 3}
+      propertyPath: _fallBoxSounds.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: aa4c4fb07efff834d98521fdc35529bc, type: 3}
+    - target: {fileID: 6074387679700837144, guid: ba9ee65a46bcd53418a7ae4198210db6, type: 3}
+      propertyPath: _fallBoxSounds.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: 667c514aaf8f6484482e26a3aab74019, type: 3}
+    - target: {fileID: 6074387679700837144, guid: ba9ee65a46bcd53418a7ae4198210db6, type: 3}
+      propertyPath: _fallBoxSounds.Array.data[5]
+      value: 
+      objectReference: {fileID: 8300000, guid: 6da4499f9edf58d4d96cb74e4bef9f7b, type: 3}
+    - target: {fileID: 6074387679700837144, guid: ba9ee65a46bcd53418a7ae4198210db6, type: 3}
+      propertyPath: _fallBoxSounds.Array.data[6]
+      value: 
+      objectReference: {fileID: 8300000, guid: a186ca4be75ef504b98da68cbd5c368c, type: 3}
+    - target: {fileID: 6074387679700837144, guid: ba9ee65a46bcd53418a7ae4198210db6, type: 3}
+      propertyPath: _fallBoxSounds.Array.data[7]
+      value: 
+      objectReference: {fileID: 8300000, guid: 21075ebda792aab449b426e3258ac536, type: 3}
+    - target: {fileID: 6074387679700837144, guid: ba9ee65a46bcd53418a7ae4198210db6, type: 3}
+      propertyPath: _fallBoxSounds.Array.data[8]
+      value: 
+      objectReference: {fileID: 8300000, guid: 4003c2f9f82178941bf14b3b37190fd7, type: 3}
+    - target: {fileID: 6074387679700837144, guid: ba9ee65a46bcd53418a7ae4198210db6, type: 3}
+      propertyPath: _fallBoxSounds.Array.data[9]
+      value: 
+      objectReference: {fileID: 8300000, guid: 26ad5b282349bab4a9c18a653a4ce514, type: 3}
     - target: {fileID: 7179708679556127552, guid: ba9ee65a46bcd53418a7ae4198210db6, type: 3}
       propertyPath: m_Name
       value: CharacterHandler
