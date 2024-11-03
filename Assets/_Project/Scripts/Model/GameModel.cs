@@ -35,7 +35,6 @@ public class GameModel : IService
         if (CurrentTask.task.MaxItems == ServiceLocator.Instance.Get<PickedItems>().PlayerPickedItems.Count)
         {
             State = GameState.GetAll;
-            _bus.Invoke(new SuccessTaskSignal(CurrentTask));
             _bus.Invoke(new GameStateChangedSignal(State));
         }
     }
