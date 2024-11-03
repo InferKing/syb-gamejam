@@ -11,6 +11,10 @@ namespace Model.Characters
         public string Name { get; private set; }
         [field: SerializeField]
         public CharacterTask Task { get; private set; }
+        [field: SerializeField]
+        public string WinText { get; private set; }
+        [field: SerializeField]
+        public string LoseText { get; private set; }
     }
 
     [System.Serializable]
