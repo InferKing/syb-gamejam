@@ -25,14 +25,14 @@ public class AudioController : MonoBehaviour
         _bus.Subscribe<RunToBoxSignal>(PlayRunToBoxMusic);
     }
 
-    private void PlayMainTheme()
+    public void PlayMainTheme()
     {
 
     }
 
-    private void PlayMenuTheme()
+    public void StorMenuTheme()
     {
-        
+        _audioSource.Stop();
     }
 
     private void PlayBoxFallSound(BoxFallSoundSignal signal)

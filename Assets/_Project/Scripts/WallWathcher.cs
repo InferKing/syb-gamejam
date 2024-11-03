@@ -1,13 +1,14 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class WallTransparencyController : MonoBehaviour
 {
     public Transform player; // Ссылка на объект игрока
     public float transparencyDistance = 5f; // Максимальная дистанция для проверки
     public LayerMask wallLayer; // Слой, на котором находятся стены
-    
     private Material wallMaterial;
     private Color originalColor;
+    private List<Material> _materials;
 
     void Update()
     {
@@ -28,7 +29,9 @@ public class WallTransparencyController : MonoBehaviour
                     originalColor = GetComponent<Renderer>().material.color;
                     Color color1 = originalColor;
                     hit.collider.gameObject.GetComponent<Renderer>().material.color = Color.blue;
-                    
+
+                    hit.collider.gameObject.GetComponent<Renderer>().GetMaterials(_materials);
+
                    // hideble.Hide(color1);
                 }
             }
