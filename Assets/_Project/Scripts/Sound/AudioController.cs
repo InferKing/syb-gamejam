@@ -6,6 +6,7 @@ public class AudioController : MonoBehaviour
     [SerializeField] private AudioSource _audioSource;
 
     [SerializeField] private List<AudioClip> _fallBoxSounds;
+    [SerializeField] private List<AudioClip> _clickSounds;
     [SerializeField] private AudioClip _stepsSound;
     [SerializeField] private AudioClip _setOffTerminalSound;
     [SerializeField] private AudioClip _setOnTerminalSound;
@@ -23,14 +24,23 @@ public class AudioController : MonoBehaviour
         _bus.Subscribe<SetOffTerminalSignal>(PlaySetOffTerminal);
         _bus.Subscribe<SetOnTerminalSignal>(PlaySetOnTerminal);
         _bus.Subscribe<RunToBoxSignal>(PlayRunToBoxMusic);
+        _bus.Subscribe<ClickSignal>(ClickSound);
     }
 
-    private void PlayMainTheme()
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            ClickSound(new ClickSignal());
+        }
+    }
+
+    public void PlayMainTheme()
     {
 
     }
 
-    private void PlayMenuTheme()
+    public void PlayMenuTheme()
     {
 
     }
@@ -40,14 +50,19 @@ public class AudioController : MonoBehaviour
         _audioSource.PlayOneShot(_fallBoxSounds[Random.Range(0, _fallBoxSounds.Count)]);
     }
 
+    private void ClickSound(ClickSignal signal)
+    {
+        _audioSource.PlayOneShot(_clickSounds[Random.Range(0, _clickSounds.Count)]);
+    }
+
     private void PlaySetOnTerminal(SetOnTerminalSignal signal)
     {
-
+        _audioSource.PlayOneShot(_setOnTerminalSound);
     }
 
     private void PlaySetOffTerminal(SetOffTerminalSignal signal)
     {
-
+        _audioSource.PlayOneShot(_setOffTerminalSound);
     }
 
     private void PlayStepsSound(StepSoundSignal signal)
