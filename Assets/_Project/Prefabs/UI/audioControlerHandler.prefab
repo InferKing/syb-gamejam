@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7424875567008740693
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8258846561329950689}
+  - component: {fileID: 5806131718087910697}
+  m_Layer: 0
+  m_Name: audioControlerHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8258846561329950689
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7424875567008740693}
+  m_LocalRotation: {x: 0.42261824, y: -0.0000012293458, z: 0.0000005364418, w: -0.9063079}
+  m_LocalPosition: {x: 998.9299, y: 372.93042, z: -399.10718}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5806131718087910697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7424875567008740693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98911675bec518e448b7e1321e2260ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioSource: {fileID: 0}
+  _fallBoxSounds:
+  - {fileID: 8300000, guid: 2c6a4f273ddce284fb1bbe5a66c3aca9, type: 3}
+  - {fileID: 8300000, guid: b70ca9816216068488102aab806cfa9d, type: 3}
+  - {fileID: 8300000, guid: 4975ed36726148e428cf84a580bac9f6, type: 3}
+  - {fileID: 8300000, guid: 0b6ecdf25c127f44da0b6dec4e622181, type: 3}
+  - {fileID: 8300000, guid: 6dfa732e9b4a0f44abbbbd6e5aebe4e8, type: 3}
+  - {fileID: 8300000, guid: c1eba33f9debe9044ae006b4a063bb7e, type: 3}
+  _clickSounds: []
+  _stepsSound: {fileID: 0}
+  _setOffTerminalSound: {fileID: 8300000, guid: 9c893968e7c818347af6e0d64cef0f28, type: 3}
+  _setOnTerminalSound: {fileID: 8300000, guid: 53804eccc421d4945bfc017016230521, type: 3}
+  _MainThemeMusic: {fileID: 8300000, guid: e5777a168cb168e429fd217666ade5c7, type: 3}
+  _MainMenuMusic: {fileID: 8300000, guid: 6c97251af64a58b47ace99f853aeab3f, type: 3}
+  _RunToBoxMusic: {fileID: 0}
