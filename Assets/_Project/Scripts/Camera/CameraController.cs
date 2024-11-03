@@ -30,7 +30,7 @@ public class CameraController : MonoBehaviour
     {
         if (_componentBase is CinemachineFramingTransposer)
         {
-            (_componentBase as CinemachineFramingTransposer).m_CameraDistance = 13;
+            (_componentBase as CinemachineFramingTransposer).m_CameraDistance = 18;
         }
     }
 }
