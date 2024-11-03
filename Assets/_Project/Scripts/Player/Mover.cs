@@ -26,6 +26,7 @@ public class Mover : MonoBehaviour
     {
         //var moveDirection = (Input.GetAxis("Horizontal") * transform.TransformDirection(Vector3.right) + Input.GetAxis("Vertical") * transform.TransformDirection(Vector3.forward)).normalized;
         Vector3 moveDirection = new Vector3(Input.GetAxisRaw(Horizontal), 0, Input.GetAxisRaw(Vertical)).normalized;
+
         if (moveDirection.magnitude > 0)
         {
             _rigidbody.AddForce(moveDirection * _moveSpeedFactor, ForceMode.Acceleration);

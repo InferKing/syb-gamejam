@@ -9,7 +9,7 @@ public class ParticleScript : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetAxis("Horizontal") > 0 || Input.GetAxis("Vertical") > 0)
+        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
         {
             if (!_particleSystem.isPlaying)
             {
