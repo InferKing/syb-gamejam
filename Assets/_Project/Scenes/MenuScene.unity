@@ -387,6 +387,7 @@ MonoBehaviour:
   _MainThemeMusic: {fileID: 0}
   _MainMenuMusic: {fileID: 8300000, guid: 25c66f82677e43c42b7a6332f9a497a8, type: 3}
   _RunToBoxMusic: {fileID: 8300000, guid: c70b44ad7e59f514690dcf4860e54f1e, type: 3}
+  _EMAIL: {fileID: 8300000, guid: 0505675bdefa9954cb963f05cad14652, type: 3}
   musicAudioSource: {fileID: 730060338}
   soundEffectAudioSource: {fileID: 730060337}
 --- !u!114 &730060342

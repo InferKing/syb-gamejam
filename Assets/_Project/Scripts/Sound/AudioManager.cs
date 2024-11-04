@@ -18,7 +18,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip _MainThemeMusic;
     [SerializeField] private AudioClip _MainMenuMusic;
     [SerializeField] private AudioClip _RunToBoxMusic;
-
+    [SerializeField] private AudioClip _EMAIL;
     public static AudioManager Instance { get; private set; }
 
     public AudioSource musicAudioSource;
@@ -74,6 +74,7 @@ public class AudioManager : MonoBehaviour
             _bus.Subscribe<TerminalPickedAndClosedSignal>(OnPicked);
             _bus.Subscribe<SuccessTaskSignal>(OnSuccess);
             _bus.Subscribe<FailedTaskSignal>(OnFailed);
+            _bus.Subscribe<NewTaskSignal>(OnNewTask);
         }
         catch { }
     }
@@ -81,6 +82,11 @@ public class AudioManager : MonoBehaviour
     private void OnPicked(TerminalPickedAndClosedSignal signal)
     {
         PlayPogonya();
+    }
+
+    private void OnNewTask(NewTaskSignal signal)
+    {
+        soundEffectAudioSource.PlayOneShot(_EMAIL);
     }
 
     private void OnSuccess(SuccessTaskSignal signal)
