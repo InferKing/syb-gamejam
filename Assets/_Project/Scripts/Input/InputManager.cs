@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class InputManager : MonoBehaviour, IService
 {
@@ -31,7 +32,7 @@ public class InputManager : MonoBehaviour, IService
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            
+            SceneManager.LoadScene(0);
         }
     }
 

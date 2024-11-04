@@ -12,6 +12,8 @@ public class GameController : MonoBehaviour
     private bool _hasTask = false;
     private EventBus _bus;
 
+    private Coroutine _coroutine;
+
     private void Start()
     {
         _bus = ServiceLocator.Instance.Get<EventBus>();
@@ -62,12 +64,22 @@ public class GameController : MonoBehaviour
     private void OnFailedTask(FailedTaskSignal signal)
     {
         ServiceLocator.Instance.Get<GameModel>().resultTasks[signal.task] = false;
-        StartCoroutine(Delay(3f));
+        if (_coroutine != null)
+        {
+            StopCoroutine(_coroutine);
+            _coroutine = null;
+        }
+        _coroutine = StartCoroutine(Delay(3f));
     }
 
     private void OnSuccessTask(SuccessTaskSignal signal)
     {
         ServiceLocator.Instance.Get<GameModel>().resultTasks[signal.task] = true;
-        StartCoroutine(Delay(3f));
+        if (_coroutine != null)
+        {
+            StopCoroutine(_coroutine);
+            _coroutine = null;
+        }
+        _coroutine = StartCoroutine(Delay(3f));
     }
 }
