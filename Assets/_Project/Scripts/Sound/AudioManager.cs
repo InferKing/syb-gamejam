@@ -71,7 +71,10 @@ public class AudioManager : MonoBehaviour
 
     private void ClickSound(ClickSignal signal)
     {
-        soundEffectAudioSource.PlayOneShot(_clickSounds[Random.Range(0, _clickSounds.Count)]);
+        if (true)
+        {
+              soundEffectAudioSource.PlayOneShot(_clickSounds[Random.Range(0, _clickSounds.Count)]);
+        }
     }
 
     private void PlaySetOnTerminal(SetOnTerminalSignal signal)

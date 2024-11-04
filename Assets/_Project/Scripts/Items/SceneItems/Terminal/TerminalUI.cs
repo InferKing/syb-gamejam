@@ -14,6 +14,8 @@ public class TerminalUI : MonoBehaviour
     private AllItemsView _allItems;
 
     private NewTask _task;
+    private bool _isCanClisk;
+    public bool IsCanClisk => _isCanClisk;
 
     private void Start()
     {
@@ -25,6 +27,8 @@ public class TerminalUI : MonoBehaviour
 
     public void Open()
     {
+        _isCanClisk = true;
+
         GameModel model = ServiceLocator.Instance.Get<GameModel>();
 
         if (model.State == GameState.PickedInTerminal || model.State == GameState.GetAll)
@@ -51,6 +55,8 @@ public class TerminalUI : MonoBehaviour
 
     public void Close()
     {
+        _isCanClisk = false;
+
         int pickedAmount = ServiceLocator.Instance.Get<PickedItems>().Items.Count;
         int taskAmount = ServiceLocator.Instance.Get<GameModel>().CurrentTask.task.MaxItems;
         GameModel model = ServiceLocator.Instance.Get<GameModel>();
