@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 public class BoxMover : MonoBehaviour
 {
-    private const float Radius = 20f;
+    private const float Radius = 10f;
 
     [SerializeField]
     private NavMeshAgent _agent;

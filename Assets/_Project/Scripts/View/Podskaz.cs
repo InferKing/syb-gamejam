@@ -19,6 +19,8 @@ public class Podskaz : MonoBehaviour
         _bus.Subscribe<TerminalPickedAndClosedSignal>(OnPickedTerminal);
         _bus.Subscribe<NewTaskSignal>(OnNewTask);
         _bus.Subscribe<GetItemInSceneSignal>(OnGetItems);
+        _bus.Subscribe<SuccessTaskSignal>(OnSuccess);
+        _bus.Subscribe<FailedTaskSignal>(OnFailed);
     }
 
     void OnPickedTerminal(TerminalPickedAndClosedSignal signal)
@@ -29,6 +31,26 @@ public class Podskaz : MonoBehaviour
             _coroutine = null;
         }
         _coroutine = StartCoroutine(TypeText("Найдите все вещи, которые спрятались в коробках."));
+    }
+
+    void OnFailed(FailedTaskSignal signal)
+    {
+        if (_coroutine != null)
+        {
+            StopCoroutine(_coroutine);
+            _coroutine = null;
+        }
+        _coroutine = StartCoroutine(TypeText("Вы опоздали."));
+    }
+
+    void OnSuccess(SuccessTaskSignal signal)
+    {
+        if (_coroutine != null)
+        {
+            StopCoroutine(_coroutine);
+            _coroutine = null;
+        }
+        _coroutine = StartCoroutine(TypeText("Вы успели."));
     }
 
     void OnNewTask(NewTaskSignal signal)
@@ -56,11 +78,11 @@ public class Podskaz : MonoBehaviour
 
     IEnumerator TypeText(string text)
     {
-        string res = "";
+        _text.text = "";
         foreach (var item in text) 
-        { 
-            res += item;
-            yield return new WaitForSeconds(Time.deltaTime);
+        {
+            _text.text += item;
+            yield return new WaitForSeconds(0.05f);
         }
     }
 }
