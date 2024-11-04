@@ -19,6 +19,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip _MainMenuMusic;
     [SerializeField] private AudioClip _RunToBoxMusic;
     [SerializeField] private AudioClip _EMAIL;
+    [SerializeField] private AudioClip _CHPOK;
     public static AudioManager Instance { get; private set; }
 
     public AudioSource musicAudioSource;
@@ -42,6 +43,10 @@ public class AudioManager : MonoBehaviour
         //StartCoroutine(GetBus());
     }
 
+    public void PlayChpok()
+    {
+        soundEffectAudioSource.PlayOneShot(_CHPOK);
+    }
     private void Start()
     {
         if (_bus == null)

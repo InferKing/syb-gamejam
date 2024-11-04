@@ -23,6 +23,8 @@ public class ItemBox : MonoBehaviour, IInteractable
             }
         }
 
+        AudioManager.Instance.PlayChpok();
+
         if (result >= model.CurrentTask.task.MinCoefToWin)
         {
             ServiceLocator.Instance.Get<EventBus>().Invoke(new SuccessTaskSignal(model.CurrentTask));

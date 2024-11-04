@@ -40,7 +40,7 @@ public class TaskTimer : MonoBehaviour, IService
         while (time >= 0)
         {
             time -= Time.deltaTime;
-            yield return new WaitForSeconds(Time.deltaTime);
+            yield return null;
         }
         _bus.Invoke(new FailedTaskSignal(_task));
     }

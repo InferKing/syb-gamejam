@@ -39,9 +39,6 @@ public class TaskManager : MonoBehaviour
                 return new NewTask(_usedTasks[character], character);
             }
         }
-#if UNITY_EDITOR
-        Debug.LogWarning("Can't find new task");
-#endif
-        return null;
+        return new NewTask(_characters[_characters.Count - 1].Task, _characters[_characters.Count - 1]);
     }
 }

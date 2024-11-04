@@ -31,14 +31,7 @@ public class InputManager : MonoBehaviour, IService
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (_menuCanvas.gameObject.activeSelf)
-            {
-                WorldMenuPause();
-            }
-            else
-            {
-                WorldMenuPlay();
-            }
+            
         }
     }
 
