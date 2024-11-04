@@ -16,8 +16,6 @@ public class Box : MonoBehaviour, IInteractable
     private WorldSpacePickup _pickupPrefab;
 
     public bool CanInteract { get; private set; } = true;
-    private Vector3 _startPosition;
-    private Quaternion _startRotation;
     private ItemData _item;
     private PlayerDetector _playerDetector;
 
@@ -35,12 +33,6 @@ public class Box : MonoBehaviour, IInteractable
         ServiceLocator.Instance.Get<EventBus>().Invoke(new GetItemInSceneSignal(_item));
     }
 
-    private void Start()
-    {
-        _startPosition = gameObject.transform.position;
-        _startRotation = gameObject.transform.rotation;
-    }
-
     public void ReplaceToStartPositionAndRotation()
     {
         if (_playerDetector != null) 
@@ -48,8 +40,6 @@ public class Box : MonoBehaviour, IInteractable
             _playerDetector.enabled = false;
             gameObject.layer = GetIndexOfLayer(_baseMask);
         }
-        transform.DOMove(_startPosition, 1f);
-        transform.DORotate(_startRotation.eulerAngles, 1f);
         _item = null;
 
         _boxAnimation.ResetSides();

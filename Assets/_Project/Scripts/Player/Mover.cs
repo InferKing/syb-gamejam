@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Mover : MonoBehaviour
@@ -11,12 +12,14 @@ public class Mover : MonoBehaviour
     [SerializeField] private float _moveSpeedFactor;
     [SerializeField] private float _impulsePower;
     [SerializeField] private float _maxSpeed;
-    [SerializeField] private PlayerAnimationController _animator;
     [SerializeField] private float _delaySteps;
+    [SerializeField] private Animator _animator;
+    [SerializeField] private AnimationCurve _curve;
 
     private bool _isCanMove;
     private EventBus _bus;
     private Rigidbody _rigidbody;
+    private Vector3 _moveDirection = Vector3.zero;
     public float MoveSpeed => _moveSpeedFactor;
 
     private void Start()
@@ -28,21 +31,33 @@ public class Mover : MonoBehaviour
         _isCanMove = true;
     }
 
+    private void Update()
+    {
+        _animator.SetFloat("Speed", _rigidbody.velocity.sqrMagnitude);
+        _animator.speed = Mathf.Clamp(_curve.Evaluate(_rigidbody.velocity.sqrMagnitude / 10), 1, 2);
+
+        Vector3 rot = new(GetCorrectRotation(Input.GetAxisRaw(Horizontal)), 0, GetCorrectRotation(Input.GetAxisRaw(Vertical)));
+
+        if (rot.magnitude > 0)
+        {
+            Rotate(rot);
+        }
+    }
+
     void FixedUpdate()
     {
         if (_isCanMove)
         {
-            Vector3 moveDirection = new Vector3(Input.GetAxisRaw(Horizontal), 0, Input.GetAxisRaw(Vertical)).normalized;
+            Vector3 move = new Vector3(Input.GetAxisRaw(Horizontal), 0, Input.GetAxisRaw(Vertical)).normalized;
 
-            if (moveDirection.magnitude > 0)
+            if (move.magnitude > 0)
             {
                 if (_rigidbody.velocity.magnitude < 1f)
                 {
-                    _rigidbody.AddForce(moveDirection * _impulsePower, ForceMode.Impulse);
+                    _rigidbody.AddForce(move * _impulsePower, ForceMode.Impulse);
                 }
 
-                _rigidbody.AddForce(moveDirection * _moveSpeedFactor, ForceMode.Acceleration);
-                Rotate(moveDirection);
+                _rigidbody.AddForce(move * _moveSpeedFactor, ForceMode.Acceleration);
             }
 
             if (_rigidbody.velocity.magnitude > _maxSpeed)
@@ -52,9 +67,16 @@ public class Mover : MonoBehaviour
         }
     }
 
+    private int GetCorrectRotation(float value)
+    {
+        if (value < 0) return -1;
+        else if (value > 0) return 1;
+        return 0;
+    }
+
     private void Rotate(Vector3 forward)
     {
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(forward), _rotationSpeed);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(forward), _rotationSpeed * Time.deltaTime);
     }
 
     private void StopMove(CantMoveSignal signal)

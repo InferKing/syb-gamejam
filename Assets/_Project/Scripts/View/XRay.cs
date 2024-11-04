@@ -6,30 +6,39 @@ public class XRay : MonoBehaviour
 {
     [SerializeField]
     private Transform _playerTransform;
+    [SerializeField]
+    private LayerMask _layerMask;
 
     RaycastHit oldHit;
 
     private void FixedUpdate()
     {
-        // не работает пока не добавить коллайдеры на объекты + использовать TryGetComponent
+        float characterDistance = Vector3.Distance(transform.position, _playerTransform.position);
+        Vector3 fwd = transform.TransformDirection(Vector3.forward);
 
-        //float characterDistance = Vector3.Distance(transform.position, _playerTransform.position);
-        //Vector3 fwd = transform.TransformDirection(Vector3.forward);
+        if (Physics.Raycast(transform.position, fwd, out RaycastHit hit, characterDistance, _layerMask))
+        {
+            if (oldHit.transform)
+            {
+                if (oldHit.transform.gameObject.TryGetComponent(out Renderer renderer1))
+                {
+                    renderer1.enabled = true;
+                }
+            }
 
-        //if (Physics.Raycast(transform.position, fwd, out RaycastHit hit, characterDistance))
-        //{
-        //    if (oldHit.transform)
-        //    {
-        //        Color colorA = oldHit.transform.gameObject.GetComponent<Renderer>().material.color;
-        //        colorA.a = 1f;
-        //        oldHit.transform.gameObject.GetComponent<Renderer>().material.SetColor("_Color", colorA);
-        //    }
+            if (hit.transform.gameObject.TryGetComponent(out Renderer renderer2))
+            {
+                renderer2.enabled = false;
+            }
 
-        //    Color colorB = hit.transform.gameObject.GetComponent<Renderer>().material.color;
-        //    colorB.a = 0.5f;
-        //    hit.transform.gameObject.GetComponent<Renderer>().material.SetColor("_Color", colorB);
-
-        //    oldHit = hit;
-        //}
+            oldHit = hit;
+        }
+        else
+        {
+            if (oldHit.transform != null)
+            {
+                oldHit.transform.GetComponent<Renderer>().enabled = true;
+            }
+        }
     }
 }
