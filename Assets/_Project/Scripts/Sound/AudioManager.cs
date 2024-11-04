@@ -103,6 +103,11 @@ public class AudioManager : MonoBehaviour
         _bus = ServiceLocator.Instance.Get<EventBus>();
     }
 
+    private void PlayLoseMissionSound()
+    {
+
+    }
+
     private IEnumerator PlaySteps()
     {
         _isPlayingSteps = true;
