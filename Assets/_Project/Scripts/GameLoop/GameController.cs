@@ -50,11 +50,13 @@ public class GameController : MonoBehaviour
 
     private void OnFailedTask(FailedTaskSignal signal)
     {
+        ServiceLocator.Instance.Get<GameModel>().resultTasks[signal.task] = false;
         _hasTask = false;
     }
 
     private void OnSuccessTask(SuccessTaskSignal signal)
     {
+        ServiceLocator.Instance.Get<GameModel>().resultTasks[signal.task] = true;
         _hasTask = false;
     }
 }
