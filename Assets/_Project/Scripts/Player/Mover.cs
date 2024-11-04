@@ -88,7 +88,7 @@ public class Mover : MonoBehaviour
 
     private void StartMove(CanMoveSignal signal)
     {
-        _isCanMove = false;
+        _isCanMove = true;
     }
 }
 
