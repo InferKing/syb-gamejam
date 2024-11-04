@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ParticleScript : MonoBehaviour
 {
-    [SerializeField] private Mover _mover;
+    [SerializeField] private SecondMover _mover;
     [SerializeField] private ParticleSystem _particleSystem;
 
     void Update()
