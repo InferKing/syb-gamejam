@@ -52,10 +52,10 @@ public class Mover : MonoBehaviour
             {
                 ServiceLocator.Instance.Get<EventBus>().Invoke(new StepSoundSignal());
 
-                if (_rigidbody.velocity.magnitude < 1f)
-                {
-                    _rigidbody.AddForce(move * _impulsePower, ForceMode.Impulse);
-                }
+                //if (_rigidbody.velocity.magnitude < 1f)
+                //{
+                //    _rigidbody.AddForce(move * _impulsePower, ForceMode.Impulse);
+                //}
 
                 _rigidbody.AddForce(move * _moveSpeedFactor, ForceMode.Acceleration);
             }
