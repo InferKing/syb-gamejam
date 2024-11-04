@@ -17,6 +17,8 @@ namespace Model.Characters
         public string WinText { get; private set; }
         [field: SerializeField]
         public string LoseText { get; private set; }
+        [field: SerializeField]
+        public Sprite Icon { get; private set; }
     }
 
     [System.Serializable]

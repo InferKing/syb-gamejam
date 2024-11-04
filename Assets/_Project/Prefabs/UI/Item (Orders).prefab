@@ -245,7 +245,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _icon: {fileID: 155646143102881115}
-  _completed: {fileID: 1871514836379600978}
   _selected: {fileID: 6793790274764788277}
   _text: {fileID: 608725657516723584}
 --- !u!1 &3599838124409283210
@@ -316,8 +315,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u0415\u0449\u0435 \u043E\u0434\u043D\u043E\u043D \u043D\u0430\u0437\u0432\u0430\u043D\u0438\u0435"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7c0974656842c614a8d8d2b7185cbb63, type: 2}
+  m_sharedMaterial: {fileID: 7243718612608931906, guid: 7c0974656842c614a8d8d2b7185cbb63, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
