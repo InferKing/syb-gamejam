@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Cyborg
   m_EditorClassIdentifier: 
   <Name>k__BackingField: "\u041A\u0438\u0431\u043E\u0440\u0433-\u0443\u0431\u0438\u0439\u0446\u0430"
+  <Sprite>k__BackingField: {fileID: 21300000, guid: 3aaf932eb829baa47a92ad2624ff20d9, type: 3}
   <Description>k__BackingField: "\u0421\u0442\u0440\u0430\u0448\u043D\u0430\u044F
     \u043C\u0430\u0448\u0438\u043D\u0430 \u0441\u043C\u0435\u0440\u0442\u0438, \u0443\u043D\u0438\u0447\u0442\u043E\u0436\u0430\u044E\u0449\u0430\u044F
     \u0432\u0441\u0435 \u043D\u0430 \u0441\u0432\u043E\u0435\u043C \u043F\u0443\u0442\u0438.
