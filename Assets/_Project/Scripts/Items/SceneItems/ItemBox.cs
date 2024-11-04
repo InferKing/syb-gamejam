@@ -1,6 +1,5 @@
 using UnityEngine;
 
-// для отправки подобранного
 public class ItemBox : MonoBehaviour, IInteractable
 {
     public bool CanInteract => ServiceLocator.Instance.Get<GameModel>().State == GameState.GetAll;

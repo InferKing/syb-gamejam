@@ -1,6 +1,11 @@
+using System.Collections.Generic;
+
 public class GameModel : IService
 {
     private EventBus _bus;
+
+    public List<NewTask> allTasks = new();
+    public Dictionary<NewTask, bool> resultTasks = new();
 
     public GameModel(EventBus bus)
     {
@@ -17,6 +22,7 @@ public class GameModel : IService
     private void OnNewTask(NewTaskSignal signal)
     {
         CurrentTask = signal.task;
+        allTasks.Add(CurrentTask);
         State = GameState.NewTask;
         _bus.Invoke(new GameStateChangedSignal(State));
     }
