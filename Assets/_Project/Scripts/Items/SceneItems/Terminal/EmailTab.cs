@@ -5,6 +5,8 @@ public class EmailTab : TerminalTab
 {
     [SerializeField]
     private EmailView _emailPrefab;
+    [SerializeField]
+    private Transform _whereSpawn;
 
     private Dictionary<NewTask, EmailView> views = new();
 
@@ -18,7 +20,13 @@ public class EmailTab : TerminalTab
             {
                 value.UpdateView(task);
             }
+            else
+            {
+                var go = Instantiate(_emailPrefab.gameObject);
+                go.transform.SetParent(_whereSpawn, false);
+                views[item] = go.GetComponent<EmailView>();
+                views[item].UpdateView(task);
+            }
         }
-        
     }
 }

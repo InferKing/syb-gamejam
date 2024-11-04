@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -12,6 +10,8 @@ public class EmailView : MonoBehaviour
 
     public void UpdateView(NewTask task)
     {
-        
+        icon.sprite = task.character.Sprite;
+        isSuccess.text = ServiceLocator.Instance.Get<GameModel>().resultTasks[task] ? "<color=green>”—œ≈’</color>" : "<color=red>Õ≈”ƒ¿◊¿</color>";
+        description.text = ServiceLocator.Instance.Get<GameModel>().resultTasks[task] ? task.character.WinText : task.character.LoseText;
     }
 }
