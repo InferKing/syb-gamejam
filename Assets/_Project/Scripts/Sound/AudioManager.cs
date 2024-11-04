@@ -16,7 +16,7 @@ public class AudioManager : MonoBehaviour
 
     public static AudioManager Instance { get; private set; }
 
-    public AudioSource musicAudioSource; 
+    public AudioSource musicAudioSource;
     public AudioSource soundEffectAudioSource;
 
     private EventBus _bus;
@@ -26,15 +26,15 @@ public class AudioManager : MonoBehaviour
     {
         if (Instance == null)
         {
-            Instance = this; 
-            DontDestroyOnLoad(gameObject); 
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(gameObject);
         }
         StartCoroutine(GetBus());
-        
+
     }
 
     private void Start()
