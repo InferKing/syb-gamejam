@@ -52,6 +52,8 @@ public class Mover : MonoBehaviour
 
             if (move.magnitude > 0)
             {
+                ServiceLocator.Instance.Get<EventBus>().Invoke(new StepSoundSignal());
+
                 if (_rigidbody.velocity.magnitude < 1f)
                 {
                     _rigidbody.AddForce(move * _impulsePower, ForceMode.Impulse);

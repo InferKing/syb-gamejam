@@ -6,6 +6,7 @@ public class AudioManager : MonoBehaviour
 {
     [SerializeField] private List<AudioClip> _fallBoxSounds;
     [SerializeField] private List<AudioClip> _clickSounds;
+
     [SerializeField] private AudioClip _stepsSound;
     [SerializeField] private AudioClip _setOffTerminalSound;
     [SerializeField] private AudioClip _setOnTerminalSound;
@@ -19,6 +20,7 @@ public class AudioManager : MonoBehaviour
     public AudioSource soundEffectAudioSource;
 
     private EventBus _bus;
+    private bool _isPlayingSteps = false;
 
     private void Awake()
     {
@@ -32,6 +34,7 @@ public class AudioManager : MonoBehaviour
             Destroy(gameObject);
         }
         StartCoroutine(GetBus());
+        
     }
 
     private void Start()
@@ -53,16 +56,13 @@ public class AudioManager : MonoBehaviour
         _bus.Subscribe<ClickSignal>(ClickSound);
     }
 
-    //public void PlayMusic(AudioClip clip)
-    //{
-    //    musicAudioSource.clip = clip;
-    //    musicAudioSource.Play();
-    //}
-
-    //public void PlaySoundEffect(AudioClip clip)
-    //{
-    //    soundEffectAudioSource.PlayOneShot(clip);
-    //}
+    public void PlayMusic(AudioClip clip)
+    {
+        musicAudioSource.volume = PlayerPrefs.GetFloat("Volume", 1f);
+        musicAudioSource.Stop();
+        musicAudioSource.clip = clip;
+        musicAudioSource.Play();
+    }
 
     private void PlayBoxFallSound(BoxFallSoundSignal signal)
     {
@@ -86,7 +86,10 @@ public class AudioManager : MonoBehaviour
 
     private void PlayStepsSound(StepSoundSignal signal)
     {
-        soundEffectAudioSource.PlayOneShot(_stepsSound);
+        if (!_isPlayingSteps)
+        {
+            StartCoroutine(PlaySteps());
+        }
     }
 
     private void PlayRunToBoxMusic(RunToBoxSignal signal)
@@ -99,4 +102,27 @@ public class AudioManager : MonoBehaviour
         yield return new WaitForSeconds(Time.deltaTime);
         _bus = ServiceLocator.Instance.Get<EventBus>();
     }
+
+    private IEnumerator PlaySteps()
+    {
+        _isPlayingSteps = true;
+        soundEffectAudioSource.PlayOneShot(_stepsSound);
+        yield return new WaitForSeconds(0.5f);
+        _isPlayingSteps = false;
+    }
+
+    //private IEnumerator ChangeMusic(AudioSource source, AudioClip clip)
+    //{
+    //    float volume = PlayerPrefs.GetFloat("Volume", 1f);
+    //    source.volume = volume;
+    //    for (float i = volume; i > 0f; i -= Time.deltaTime)
+    //    {
+    //        source.volume = i;
+    //        yield return null;
+    //    }
+    //    source.Stop();
+    //    source.clip = clip;
+    //    source.volume = volume;
+    //    source.Play();
+    //}
 }

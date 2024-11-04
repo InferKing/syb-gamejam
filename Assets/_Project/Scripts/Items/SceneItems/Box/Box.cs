@@ -2,6 +2,7 @@ using UnityEngine;
 using Model.Items;
 using DG.Tweening;
 
+[RequireComponent(typeof(Rigidbody))]
 public class Box : MonoBehaviour, IInteractable
 {
     [SerializeField]
@@ -18,8 +19,16 @@ public class Box : MonoBehaviour, IInteractable
     public bool CanInteract { get; private set; } = true;
     private ItemData _item;
     private PlayerDetector _playerDetector;
+    private Rigidbody _rb;
+
+    private bool _isMoved = false;
 
     public Vector3 Position => transform.position;
+
+    private void Start()
+    {
+        _rb = GetComponent<Rigidbody>();
+    }
 
     public void Action()
     {
@@ -35,6 +44,8 @@ public class Box : MonoBehaviour, IInteractable
 
     public void ReplaceToStartPositionAndRotation()
     {
+        _isMoved = false;
+
         if (_playerDetector != null) 
         { 
             _playerDetector.enabled = false;
@@ -69,6 +80,15 @@ public class Box : MonoBehaviour, IInteractable
 
     private void OnPlayerNearby()
     {
+        _isMoved = true;
         _boxMover.MoveAway();
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (_rb.velocity.magnitude > 1f && !_isMoved)
+        {
+            ServiceLocator.Instance.Get<EventBus>().Invoke(new BoxFallSoundSignal());
+        }
     }
 }
