@@ -6,8 +6,8 @@ public class AudioManager : MonoBehaviour
 {
     [SerializeField] private List<AudioClip> _fallBoxSounds;
     [SerializeField] private List<AudioClip> _clickSounds;
+    [SerializeField] private List<AudioClip> _stepsSounds;
 
-    [SerializeField] private AudioClip _stepsSound;
     [SerializeField] private AudioClip _setOffTerminalSound;
     [SerializeField] private AudioClip _setOnTerminalSound;
     [SerializeField] private AudioClip _MainThemeMusic;
@@ -106,8 +106,8 @@ public class AudioManager : MonoBehaviour
     private IEnumerator PlaySteps()
     {
         _isPlayingSteps = true;
-        soundEffectAudioSource.PlayOneShot(_stepsSound);
-        yield return new WaitForSeconds(0.5f);
+        soundEffectAudioSource.PlayOneShot(_stepsSounds[Random.Range(0, _stepsSounds.Count)]);
+        yield return new WaitForSeconds(0.3f);
         _isPlayingSteps = false;
     }
 
