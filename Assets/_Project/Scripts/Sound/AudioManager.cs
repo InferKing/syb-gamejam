@@ -152,6 +152,11 @@ public class AudioManager : MonoBehaviour
         catch { }
     }
 
+    private void PlayLoseMissionSound()
+    {
+
+    }
+
     private IEnumerator PlaySteps()
     {
         _isPlayingSteps = true;
