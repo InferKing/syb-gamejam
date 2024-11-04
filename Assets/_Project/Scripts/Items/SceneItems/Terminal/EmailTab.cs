@@ -14,7 +14,10 @@ public class EmailTab : TerminalTab
 
         foreach (var item in ServiceLocator.Instance.Get<GameModel>().allTasks)
         {
-            //if ()
+            if (views.TryGetValue(item, out EmailView value))
+            {
+                value.UpdateView(task);
+            }
         }
         
     }
