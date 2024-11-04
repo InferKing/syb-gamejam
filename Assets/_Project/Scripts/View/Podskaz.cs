@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -40,7 +39,7 @@ public class Podskaz : MonoBehaviour
             StopCoroutine(_coroutine);
             _coroutine = null;
         }
-        _coroutine = StartCoroutine(TypeText("Вы опоздали."));
+        _coroutine = StartCoroutine(TypeText("Неудача."));
     }
 
     void OnSuccess(SuccessTaskSignal signal)
@@ -50,7 +49,7 @@ public class Podskaz : MonoBehaviour
             StopCoroutine(_coroutine);
             _coroutine = null;
         }
-        _coroutine = StartCoroutine(TypeText("Вы успели."));
+        _coroutine = StartCoroutine(TypeText("Молодец!"));
     }
 
     void OnNewTask(NewTaskSignal signal)
@@ -60,7 +59,7 @@ public class Podskaz : MonoBehaviour
             StopCoroutine(_coroutine);
             _coroutine = null;
         }
-        StartCoroutine(TypeText("У вас появилось новое задание, подойдите к терминалу. "));
+        _coroutine = StartCoroutine(TypeText("У вас появилось новое задание, подойдите к терминалу. "));
     }
 
     void OnGetItems(GetItemInSceneSignal signal)
@@ -72,7 +71,7 @@ public class Podskaz : MonoBehaviour
                 StopCoroutine(_coroutine);
                 _coroutine = null;
             }
-            StartCoroutine(TypeText("Подойдите к пневмопочте для отправки предметов герою."));
+            _coroutine = StartCoroutine(TypeText("Подойдите к пневмопочте для отправки предметов герою."));
         }
     }
 

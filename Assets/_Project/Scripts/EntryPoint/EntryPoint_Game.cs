@@ -48,5 +48,13 @@ public class EntryPoint_Game : MonoBehaviour
         ServiceLocator.Instance.Register(new AllPointToGo(_whereToGo));
         ServiceLocator.Instance.Register(_taskTimer);
         ServiceLocator.Instance.Register(_finder);
+
+    }
+    private void Start()
+    {
+        AudioManager manager = FindObjectOfType<AudioManager>();
+        manager.InitBus();
+        manager.PlayAmbient();
+
     }
 }
