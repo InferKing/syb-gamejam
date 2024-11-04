@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class PlayerInteractableFinder : MonoBehaviour
+public class PlayerInteractableFinder : MonoBehaviour, IService
 {
     [SerializeField]
     private float _radius = 1f;

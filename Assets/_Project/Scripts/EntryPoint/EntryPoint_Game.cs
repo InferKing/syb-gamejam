@@ -32,6 +32,8 @@ public class EntryPoint_Game : MonoBehaviour
     private List<Transform> _whereToGo;
     [SerializeField]
     private TaskTimer _taskTimer;
+    [SerializeField]
+    private PlayerInteractableFinder _finder;
 
     private void Awake()
     {
@@ -45,5 +47,6 @@ public class EntryPoint_Game : MonoBehaviour
         ServiceLocator.Instance.Register(new GameModel(ServiceLocator.Instance.Get<EventBus>()));
         ServiceLocator.Instance.Register(new AllPointToGo(_whereToGo));
         ServiceLocator.Instance.Register(_taskTimer);
+        ServiceLocator.Instance.Register(_finder);
     }
 }

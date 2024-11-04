@@ -9,8 +9,6 @@ public class ItemViewTerminal : MonoBehaviour, IPointerDownHandler
     [SerializeField]
     private Image _icon;
     [SerializeField]
-    private Image _completed;
-    [SerializeField]
     private Image _selected;
     [SerializeField]
     private TMP_Text _text;
@@ -32,7 +30,6 @@ public class ItemViewTerminal : MonoBehaviour, IPointerDownHandler
         _icon.sprite = _data.Sprite;
         _text.text = _data.Name;
         _selected.color = IsSelected && !IsCompleted ? Color.yellow : Color.white;
-        _completed.enabled = IsCompleted;
     }
 
     public void ResetToDefault()
@@ -43,7 +40,6 @@ public class ItemViewTerminal : MonoBehaviour, IPointerDownHandler
         _icon.sprite = _data.Sprite;
         _text.text = _data.Name;
         _selected.color = IsSelected && !IsCompleted ? Color.yellow : Color.white;
-        _completed.enabled = IsCompleted;
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -52,6 +48,8 @@ public class ItemViewTerminal : MonoBehaviour, IPointerDownHandler
         {
             return;
         }
+
+        Debug.Log("Here");
 
         PickedItems picked = ServiceLocator.Instance.Get<PickedItems>();
 
