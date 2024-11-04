@@ -384,7 +384,7 @@ MonoBehaviour:
   _setOnTerminalSound: {fileID: 8300000, guid: b4690da74f0a96241a83bbf80e74f88b, type: 3}
   _MainThemeMusic: {fileID: 0}
   _MainMenuMusic: {fileID: 0}
-  _RunToBoxMusic: {fileID: 0}
+  _RunToBoxMusic: {fileID: 8300000, guid: c70b44ad7e59f514690dcf4860e54f1e, type: 3}
   musicAudioSource: {fileID: 730060338}
   soundEffectAudioSource: {fileID: 730060337}
 --- !u!114 &730060342
