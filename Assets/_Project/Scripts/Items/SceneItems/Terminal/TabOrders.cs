@@ -17,7 +17,7 @@ public class TabOrders : TerminalTab
 
         if (task != null)
         {
-            _characterIcon.sprite = task.character.Icon;
+            _characterIcon.sprite = task.character.Sprite;
             _description.text = task.task.Description;
             _characterName.text = task.character.Name;
         }
