@@ -18,7 +18,20 @@ public class GameController : MonoBehaviour
         _bus.Subscribe<FailedTaskSignal>(OnFailedTask);
         _bus.Subscribe<SuccessTaskSignal>(OnSuccessTask);
 
-        StartCoroutine(GameCycle());
+        StartCoroutine(Delay(1f));
+    }
+
+    void FindTask()
+    {
+        NewTask task = _taskManager.GetNewTask();
+        _hasTask = true;
+        _bus?.Invoke(new NewTaskSignal(task));
+    }
+
+    IEnumerator Delay(float t)
+    {
+        yield return new WaitForSeconds(t);
+        FindTask();
     }
 
     private IEnumerator GameCycle()
@@ -40,9 +53,7 @@ public class GameController : MonoBehaviour
                 continue;
             }
 
-            NewTask task = _taskManager.GetNewTask();
-            _hasTask = true;
-            _bus?.Invoke(new NewTaskSignal(task));
+            
 
             yield return _delay10;
         }
@@ -51,12 +62,12 @@ public class GameController : MonoBehaviour
     private void OnFailedTask(FailedTaskSignal signal)
     {
         ServiceLocator.Instance.Get<GameModel>().resultTasks[signal.task] = false;
-        _hasTask = false;
+        StartCoroutine(Delay(3f));
     }
 
     private void OnSuccessTask(SuccessTaskSignal signal)
     {
         ServiceLocator.Instance.Get<GameModel>().resultTasks[signal.task] = true;
-        _hasTask = false;
+        StartCoroutine(Delay(3f));
     }
 }

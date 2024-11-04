@@ -16,6 +16,7 @@ public class WorldSpacePickup : MonoBehaviour
     public void PlayAnimation(ItemData data, Vector3 position)
     {
         transform.position = position;
+        transform.eulerAngles = Vector3.zero;
 
         _text.text = "+ " + data.Name;
         _icon.sprite = data.Sprite;

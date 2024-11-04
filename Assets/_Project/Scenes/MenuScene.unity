@@ -152,10 +152,10 @@ AudioSource:
   m_GameObject: {fileID: 730060336}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -524433677604456021, guid: 241f793c403967247b1ef88b3b276368, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -248,8 +248,8 @@ AudioSource:
   m_GameObject: {fileID: 730060336}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: e5777a168cb168e429fd217666ade5c7, type: 3}
+  OutputAudioMixerGroup: {fileID: -584658987357440087, guid: 241f793c403967247b1ef88b3b276368, type: 2}
+  m_audioClip: {fileID: 8300000, guid: 25c66f82677e43c42b7a6332f9a497a8, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0
   m_Pitch: 1
@@ -380,10 +380,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 2f98a9592b68400418ec9ef2851ee608, type: 3}
   - {fileID: 8300000, guid: 7caa91725eb2eaa429fc0a54d092fd52, type: 3}
   - {fileID: 8300000, guid: f1de3c0b7b5a41f448bc40719563f498, type: 3}
+  AMBIENT: {fileID: 8300000, guid: a128f9922f826da41850bfe1133e13a4, type: 3}
+  POGONYA: {fileID: 8300000, guid: 8400bfacbb5e17940bc4596fe3488c8d, type: 3}
   _setOffTerminalSound: {fileID: 8300000, guid: 43b2eea9bcd60014c8b302aabc5a4782, type: 3}
   _setOnTerminalSound: {fileID: 8300000, guid: b4690da74f0a96241a83bbf80e74f88b, type: 3}
   _MainThemeMusic: {fileID: 0}
-  _MainMenuMusic: {fileID: 0}
+  _MainMenuMusic: {fileID: 8300000, guid: 25c66f82677e43c42b7a6332f9a497a8, type: 3}
   _RunToBoxMusic: {fileID: 8300000, guid: c70b44ad7e59f514690dcf4860e54f1e, type: 3}
   musicAudioSource: {fileID: 730060338}
   soundEffectAudioSource: {fileID: 730060337}

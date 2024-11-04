@@ -8,6 +8,11 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private List<AudioClip> _clickSounds;
     [SerializeField] private List<AudioClip> _stepsSounds;
 
+    [SerializeField]
+    private AudioClip AMBIENT;
+    [SerializeField]
+    private AudioClip POGONYA;
+
     [SerializeField] private AudioClip _setOffTerminalSound;
     [SerializeField] private AudioClip _setOnTerminalSound;
     [SerializeField] private AudioClip _MainThemeMusic;
@@ -32,9 +37,9 @@ public class AudioManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
+            //InitBus();
         }
-        StartCoroutine(GetBus());
-
+        //StartCoroutine(GetBus());
     }
 
     private void Start()
@@ -45,15 +50,47 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    private void InitBus()
+    public void PlayAmbient()
     {
-        _bus = ServiceLocator.Instance.Get<EventBus>();
-        _bus.Subscribe<StepSoundSignal>(PlayStepsSound);
-        _bus.Subscribe<BoxFallSoundSignal>(PlayBoxFallSound);
-        _bus.Subscribe<SetOffTerminalSignal>(PlaySetOffTerminal);
-        _bus.Subscribe<SetOnTerminalSignal>(PlaySetOnTerminal);
-        _bus.Subscribe<RunToBoxSignal>(PlayRunToBoxMusic);
-        _bus.Subscribe<ClickSignal>(ClickSound);
+        PlayMusic(AMBIENT);
+    }
+
+    public void PlayPogonya()
+    {
+        PlayMusic(POGONYA);
+    }
+
+    public void InitBus()
+    {
+        try
+        {
+            _bus = ServiceLocator.Instance.Get<EventBus>();
+            _bus.Subscribe<StepSoundSignal>(PlayStepsSound);
+            _bus.Subscribe<BoxFallSoundSignal>(PlayBoxFallSound);
+            _bus.Subscribe<SetOffTerminalSignal>(PlaySetOffTerminal);
+            _bus.Subscribe<SetOnTerminalSignal>(PlaySetOnTerminal);
+            _bus.Subscribe<RunToBoxSignal>(PlayRunToBoxMusic);
+            _bus.Subscribe<ClickSignal>(ClickSound);
+            _bus.Subscribe<TerminalPickedAndClosedSignal>(OnPicked);
+            _bus.Subscribe<SuccessTaskSignal>(OnSuccess);
+            _bus.Subscribe<FailedTaskSignal>(OnFailed);
+        }
+        catch { }
+    }
+
+    private void OnPicked(TerminalPickedAndClosedSignal signal)
+    {
+        PlayPogonya();
+    }
+
+    private void OnSuccess(SuccessTaskSignal signal)
+    {
+        PlayAmbient();
+    }
+
+    private void OnFailed(FailedTaskSignal s)
+    {
+        PlayAmbient();
     }
 
     public void PlayMusic(AudioClip clip)
@@ -99,8 +136,14 @@ public class AudioManager : MonoBehaviour
 
     private IEnumerator GetBus()
     {
+        
         yield return new WaitForSeconds(Time.deltaTime);
-        _bus = ServiceLocator.Instance.Get<EventBus>();
+        try
+        {
+            _bus = ServiceLocator.Instance.Get<EventBus>();
+            Debug.Log("Subscribed");
+        }
+        catch { }
     }
 
     private IEnumerator PlaySteps()
