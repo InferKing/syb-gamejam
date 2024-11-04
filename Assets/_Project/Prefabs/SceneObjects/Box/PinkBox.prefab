@@ -227,6 +227,7 @@ GameObject:
   - component: {fileID: 4220564513620920541}
   - component: {fileID: -1477222953807865409}
   - component: {fileID: 1942401540816507631}
+  - component: {fileID: -1592573225106323775}
   m_Layer: 0
   m_Name: PinkBox
   m_TagString: Untagged
@@ -502,6 +503,18 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 21075ebda792aab449b426e3258ac536, type: 3}
   - {fileID: 8300000, guid: 4003c2f9f82178941bf14b3b37190fd7, type: 3}
   - {fileID: 8300000, guid: 26ad5b282349bab4a9c18a653a4ce514, type: 3}
+--- !u!114 &-1592573225106323775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1303263097060153180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14283b15729ad9544b9a796a217bd60d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2214415036279789379
 GameObject:
   m_ObjectHideFlags: 0

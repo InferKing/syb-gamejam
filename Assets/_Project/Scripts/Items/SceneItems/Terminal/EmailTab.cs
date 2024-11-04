@@ -14,18 +14,18 @@ public class EmailTab : TerminalTab
     {
         base.SetActiveTab(isActive, task);
 
-        foreach (var item in ServiceLocator.Instance.Get<GameModel>().allTasks)
+        foreach (var item in ServiceLocator.Instance.Get<GameModel>().resultTasks.Keys)
         {
             if (views.TryGetValue(item, out EmailView value))
             {
-                value.UpdateView(task);
+                value.UpdateView(item);
             }
             else
             {
                 var go = Instantiate(_emailPrefab.gameObject);
                 go.transform.SetParent(_whereSpawn, false);
                 views[item] = go.GetComponent<EmailView>();
-                views[item].UpdateView(task);
+                views[item].UpdateView(item);
             }
         }
     }
