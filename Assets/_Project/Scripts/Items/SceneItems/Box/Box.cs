@@ -15,6 +15,8 @@ public class Box : MonoBehaviour, IInteractable
     private BoxAnimation _boxAnimation;
     [SerializeField]
     private WorldSpacePickup _pickupPrefab;
+    [SerializeField]
+    private BoxAudio _audio;
 
     public bool CanInteract { get; private set; } = true;
     private ItemData _item;
@@ -88,7 +90,7 @@ public class Box : MonoBehaviour, IInteractable
     {
         if (_rb.velocity.magnitude > 1f && !_isMoved)
         {
-            ServiceLocator.Instance.Get<EventBus>().Invoke(new BoxFallSoundSignal());
+            _audio.Play();
         }
     }
 }

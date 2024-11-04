@@ -39,6 +39,7 @@ public class TerminalUI : MonoBehaviour
         _root.SetActive(true);
 
         OpenTab(0);
+
         ServiceLocator.Instance.Get<EventBus>().Invoke(new SetOnTerminalSignal());
         ServiceLocator.Instance.Get<EventBus>().Invoke(new CantMoveSignal());
     }
