@@ -11,7 +11,8 @@ public class GameController : MonoBehaviour
 
     private bool _hasTask = false;
     private EventBus _bus;
-
+    private WaitForSeconds _delay3 = new(3);
+    private WaitForSeconds _delay10 = new(10);
     private Coroutine _coroutine;
 
     private void Start()
@@ -38,8 +39,6 @@ public class GameController : MonoBehaviour
 
     private IEnumerator GameCycle()
     {
-        WaitForSeconds _delay3 = new(3);
-        WaitForSeconds _delay10 = new(10);
         yield return _delay3;
         while (true)
         {
