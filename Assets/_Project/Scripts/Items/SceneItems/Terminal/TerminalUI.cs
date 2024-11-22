@@ -56,7 +56,6 @@ public class TerminalUI : MonoBehaviour
     public void Close()
     {
         _isCanClisk = false;
-        Time.timeScale = 1;
 
         int pickedAmount = ServiceLocator.Instance.Get<PickedItems>().Items.Count;
         int taskAmount = ServiceLocator.Instance.Get<GameModel>().CurrentTask.task.MaxItems;
@@ -73,6 +72,7 @@ public class TerminalUI : MonoBehaviour
         }
         // Проверка в каком состоянии вышел
 
+        Time.timeScale = 1;
         ServiceLocator.Instance.Get<EventBus>().Invoke(new CanMoveSignal());
         ServiceLocator.Instance.Get<EventBus>().Invoke(new SetOffTerminalSignal());
         _root.SetActive(false);
