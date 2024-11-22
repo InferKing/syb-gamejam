@@ -17526,7 +17526,7 @@ GameObject:
   - component: {fileID: 547284650}
   - component: {fileID: 547284649}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Exit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17601,6 +17601,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1766341102}
+        m_TargetAssemblyTypeName: EndGameView, Assembly-CSharp
+        m_MethodName: BackToMainMenu
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -56813,13 +56825,14 @@ GameObject:
   - component: {fileID: 1739520709}
   - component: {fileID: 1739520711}
   - component: {fileID: 1739520710}
+  - component: {fileID: 1739520712}
   m_Layer: 5
   m_Name: ExitWindow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1739520709
 RectTransform:
   m_ObjectHideFlags: 0
@@ -56882,6 +56895,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1739520708}
   m_CullTransparentMesh: 1
+--- !u!114 &1739520712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1739520708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00300089f0fd37e4d830efa4bf9a6f72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ExitButton: {fileID: 547284649}
+  _RestartButton: {fileID: 2097257964}
 --- !u!1001 &1740889588
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -58375,6 +58402,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1766341100}
   - component: {fileID: 1766341101}
+  - component: {fileID: 1766341102}
   m_Layer: 0
   m_Name: TaskManager
   m_TagString: Untagged
@@ -58415,6 +58443,20 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a2a1a654b0c15fa48b86cf8837f69d26, type: 2}
   - {fileID: 11400000, guid: 42a5aa1891de3614d887fff1b3ccfd1a, type: 2}
   - {fileID: 11400000, guid: e0a4b2804e0254845a3a6123b4764f04, type: 2}
+  _endGameView: {fileID: 1766341102}
+--- !u!114 &1766341102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1766341099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 053638106671cc144842dd18aa168ae5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _endGameWindow: {fileID: 1739520708}
 --- !u!1001 &1778097684
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -69252,7 +69294,7 @@ GameObject:
   - component: {fileID: 2097257965}
   - component: {fileID: 2097257964}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Restart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -69327,6 +69369,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 721801009}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
+        m_MethodName: FindTask
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

@@ -28,7 +28,6 @@ public class TerminalUI : MonoBehaviour
     public void Open()
     {
         _isCanClisk = true;
-        Time.timeScale = 0;
         GameModel model = ServiceLocator.Instance.Get<GameModel>();
 
         if (model.State == GameState.PickedInTerminal || model.State == GameState.GetAll)
@@ -44,6 +43,7 @@ public class TerminalUI : MonoBehaviour
 
         OpenTab(0);
 
+        Time.timeScale = 0;
         ServiceLocator.Instance.Get<EventBus>().Invoke(new SetOnTerminalSignal());
         ServiceLocator.Instance.Get<EventBus>().Invoke(new CantMoveSignal());
     }

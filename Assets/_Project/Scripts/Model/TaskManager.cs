@@ -18,11 +18,14 @@ public class NewTask
 // выдает новые задачи и отслеживает какие уже были
 public class TaskManager : MonoBehaviour
 {
-    [SerializeField]
-    private List<CharacterData> _characters;
-
+    private int _taskCount = 0;
     private Dictionary<CharacterData, CharacterTask> _usedTasks = new();
     private EventBus _bus;
+
+    [SerializeField]
+    private List<CharacterData> _characters;
+    [SerializeField] 
+    private EndGameView _endGameView;
 
     private void Start()
     {
@@ -40,5 +43,25 @@ public class TaskManager : MonoBehaviour
             }
         }
         return new NewTask(_characters[_characters.Count - 1].Task, _characters[_characters.Count - 1]);
+    }
+
+    public NewTask GetNewTaskLimited()
+    {
+        if (_taskCount == _characters.Count)
+        {
+            _endGameView.ShowWindow();
+            _taskCount = 0;
+            return new NewTask(_characters[_taskCount].Task, _characters[_taskCount]);
+        }
+        else if (_taskCount == 0)
+        {
+            _taskCount++;
+            return new NewTask(_characters[0].Task, _characters[0]);
+        }
+        else if(_taskCount < _characters.Count)
+        {
+            _taskCount++;
+        }
+            return new NewTask(_characters[_taskCount-1].Task, _characters[_taskCount-1]);
     }
 }

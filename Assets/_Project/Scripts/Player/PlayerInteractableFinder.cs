@@ -35,7 +35,7 @@ public class PlayerInteractableFinder : MonoBehaviour, IService
     {
         if (_interactable != null)
         {
-            Debug.Log(Vector3.Distance(_interactable.Position, transform.position));
+            //Debug.Log(Vector3.Distance(_interactable.Position, transform.position));
         }
         if (_interactable != null && _interactable.CanInteract)
         {

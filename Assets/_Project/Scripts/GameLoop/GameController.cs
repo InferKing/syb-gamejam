@@ -24,16 +24,21 @@ public class GameController : MonoBehaviour
         StartCoroutine(Delay(1f));
     }
 
-    void FindTask()
+    public void FindTask()
     {
-        NewTask task = _taskManager.GetNewTask();
+        if (Time.timeScale == 0)
+        {
+            Time.timeScale = 1;
+        }
+
+        NewTask task = _taskManager.GetNewTaskLimited();
         _hasTask = true;
         _bus?.Invoke(new NewTaskSignal(task));
     }
 
     IEnumerator Delay(float t)
     {
-        yield return new WaitForSeconds(t);
+        yield return new WaitForSeconds(t);  
         FindTask();
     }
 
@@ -53,8 +58,6 @@ public class GameController : MonoBehaviour
                 yield return null;
                 continue;
             }
-
-            
 
             yield return _delay10;
         }
