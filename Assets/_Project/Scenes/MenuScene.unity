@@ -441,7 +441,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 2f98a9592b68400418ec9ef2851ee608, type: 3}
   - {fileID: 8300000, guid: 7caa91725eb2eaa429fc0a54d092fd52, type: 3}
   - {fileID: 8300000, guid: f1de3c0b7b5a41f448bc40719563f498, type: 3}
-  AMBIENT: {fileID: 8300000, guid: e20d81f00a3a6714a8527c947d86fe21, type: 3}
+  AMBIENT: {fileID: 8300000, guid: ca54d2494c1b5814a9bcbe9c5a5a742c, type: 3}
   POGONYA: {fileID: 8300000, guid: 8400bfacbb5e17940bc4596fe3488c8d, type: 3}
   _setOffTerminalSound: {fileID: 8300000, guid: 43b2eea9bcd60014c8b302aabc5a4782, type: 3}
   _setOnTerminalSound: {fileID: 8300000, guid: b4690da74f0a96241a83bbf80e74f88b, type: 3}

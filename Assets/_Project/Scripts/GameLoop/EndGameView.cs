@@ -5,6 +5,7 @@ using UnityEngine;
 public class EndGameView : MonoBehaviour
 {
     [SerializeField] private GameObject _endGameWindow;
+    [SerializeField] private GameObject _loreWindow;
 
     private void Start()
     {
@@ -20,6 +21,14 @@ public class EndGameView : MonoBehaviour
     public void BackToMainMenu()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+        Time.timeScale = 1;
+    }
+
+    public void RestartLevel()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+        _loreWindow.SetActive(false);
         Time.timeScale = 1;
     }
 }
