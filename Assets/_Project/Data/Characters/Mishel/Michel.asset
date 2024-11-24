@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cbdab164e4e9ca47a3e796fed8af1a9, type: 3}
   m_Name: Michel
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: "\u041C\u0438\u0448\u0435\u043B\u044C \u0423\u0438\u0442\u043C\u0430\u043D"
+  <Name>k__BackingField: "\u041C\u0438\u0448\u0435\u043B\u044C \u0423\u0438\u0442\u043B\u0438"
   <Sprite>k__BackingField: {fileID: 21300000, guid: ed075585e28ad7d4884c39000d0cac8e, type: 3}
   <Description>k__BackingField: "\u041C\u0438\u0448\u0435\u043B\u044C \u0423\u0438\u0442\u043B\u0438
     - \u043F\u0440\u043E\u0441\u043B\u0430\u0432\u043B\u0435\u043D\u043D\u044B\u0439

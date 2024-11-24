@@ -58,7 +58,7 @@ MonoBehaviour:
   - key: 9
     coef: 2
   - key: 10
-    coef: 1
+    coef: 2
   - key: 11
     coef: 0
   - key: 12
