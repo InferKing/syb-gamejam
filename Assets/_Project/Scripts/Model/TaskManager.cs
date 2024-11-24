@@ -49,9 +49,9 @@ public class TaskManager : MonoBehaviour
     {
         if (_taskCount == _characters.Count)
         {
-            _endGameView.ShowWindow();
+            _endGameView.StartDelayShowWindow();
             _taskCount = 0;
-            return new NewTask(_characters[_taskCount].Task, _characters[_taskCount]);
+            return null;
         }
         else if (_taskCount == 0)
         {

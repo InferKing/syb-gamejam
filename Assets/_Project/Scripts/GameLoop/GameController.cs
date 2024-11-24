@@ -32,6 +32,13 @@ public class GameController : MonoBehaviour
         }
 
         NewTask task = _taskManager.GetNewTaskLimited();
+
+        if (task == null)
+        {
+            Debug.Log("Здесь конец игры");
+            return;
+        }
+
         _hasTask = true;
         _bus?.Invoke(new NewTaskSignal(task));
     }
