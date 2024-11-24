@@ -6,10 +6,19 @@ public class EndGameView : MonoBehaviour
 {
     [SerializeField] private GameObject _endGameWindow;
     [SerializeField] private GameObject _loreWindow;
+    [SerializeField] private GameObject _uiTerminal;
+
+    private Coroutine _delay;
+
 
     private void Start()
     {
         _endGameWindow.SetActive(false);
+
+        if (_delay != null)
+        {
+            StopCoroutine(_delay);
+        }
     }   
     
     public void ShowWindow()
@@ -30,5 +39,18 @@ public class EndGameView : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene(1);
         _loreWindow.SetActive(false);
         Time.timeScale = 1;
+    }
+
+    public void StartDelayShowWindow()
+    {
+       _delay = StartCoroutine(Delay());
+    }
+
+    private IEnumerator Delay()
+    {
+        _uiTerminal.SetActive(true);
+        Time.timeScale = 0;
+        yield return new WaitForSecondsRealtime(15f);
+        ShowWindow();
     }
 }

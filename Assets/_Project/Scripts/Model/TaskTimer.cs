@@ -30,7 +30,7 @@ public class TaskTimer : MonoBehaviour, IService
         _timer = null;
     }
 
-    private void OnFailedTusk(FailedTaskSignal signal)
+    private void OnFailedTusk(FailedTaskSignal failed)
     {
         _task = null;
         StopCoroutine(_timer);
@@ -50,6 +50,7 @@ public class TaskTimer : MonoBehaviour, IService
             time -= Time.deltaTime;
             yield return null;
         }
-        OnFailedTusk(new FailedTaskSignal(_task));
+        _bus.Invoke(new FailedTaskSignal(_task));
+        //OnFailedTusk(new FailedTaskSignal(_task));
     }
 }
