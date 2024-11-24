@@ -15,6 +15,7 @@ public class TaskTimer : MonoBehaviour, IService
         _bus.Subscribe<NewTaskSignal>(OnNewTask);
         _bus.Subscribe<SuccessTaskSignal>(OnSuccessTask);
         _bus.Subscribe<TerminalPickedAndClosedSignal>(OnPickedTerminal);
+        _bus.Subscribe<FailedTaskSignal>(OnFailedTusk);
     }
 
     private void OnNewTask(NewTaskSignal signal) 
@@ -23,6 +24,13 @@ public class TaskTimer : MonoBehaviour, IService
     }
 
     private void OnSuccessTask(SuccessTaskSignal signal)
+    {
+        _task = null;
+        StopCoroutine(_timer);
+        _timer = null;
+    }
+
+    private void OnFailedTusk(FailedTaskSignal signal)
     {
         _task = null;
         StopCoroutine(_timer);
@@ -42,6 +50,6 @@ public class TaskTimer : MonoBehaviour, IService
             time -= Time.deltaTime;
             yield return null;
         }
-        _bus.Invoke(new FailedTaskSignal(_task));
+        OnFailedTusk(new FailedTaskSignal(_task));
     }
 }

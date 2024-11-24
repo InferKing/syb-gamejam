@@ -91,7 +91,6 @@ public class Box : MonoBehaviour, IInteractable
         if (_rb.velocity.magnitude > 1f && !_isMoved)
         {
             _audio.Play();
-            Debug.Log("AAAAAAAAAAAAAA");
         }
     }
 }
