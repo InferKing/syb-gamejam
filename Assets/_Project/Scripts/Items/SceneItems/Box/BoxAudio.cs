@@ -16,6 +16,8 @@ public class BoxAudio : MonoBehaviour
 
     public void Play()
     {
-        _source.PlayOneShot(_clips[Random.Range(0, _clips.Count)]);
+        var currentclip = _clips[Random.Range(0, _clips.Count)];
+        _source.PlayOneShot(currentclip);
+        Debug.Log(currentclip.name);
     }
 }
