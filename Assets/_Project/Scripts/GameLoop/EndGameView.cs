@@ -48,9 +48,9 @@ public class EndGameView : MonoBehaviour
 
     private IEnumerator Delay()
     {
-        _uiTerminal.SetActive(true);
+        //_endGameWindow.SetActive(true);
         Time.timeScale = 0;
-        yield return new WaitForSecondsRealtime(15f);
+        yield return new WaitForSecondsRealtime(0.05f);
         ShowWindow();
     }
 }
